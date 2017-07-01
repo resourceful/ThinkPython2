@@ -3423,54 +3423,48 @@ def polyline(t, n, length, angle):
 있다. 이 기본 요소들을 최소한으로 사용하여 그릴 수 있는 철자를
 설계해보라.  그리고, 그 철자들을 그리는 함수를 작성하라.
 
-You should write one function for each letter, with names
-\verb"draw_a", \verb"draw_b", etc., and put your functions
-in a file named {\tt letters.py}.  You can download a
-``turtle typewriter'' from \url{http://thinkpython2.com/code/typewriter.py}
-to help you test your code.
+\verb"draw_a"와 \verb"draw_b"같은 식으로 각 철자마다 함수를 만들어서
+{\tt letters.py} 안에 저장하라.
+\url{http://thinkpython2.com/code/typewriter.py}에 ``거북이
+타자기(turtle typewriter)''를 다운로드 받아 코드를 시험해볼 수 있다.
 
-You can get a solution from \url{http://thinkpython2.com/code/letters.py};
-it also requires
-\url{http://thinkpython2.com/code/polygon.py}.
+\url{http://thinkpython2.com/code/letters.py}에 다운로드 받을 수
+있다. \url{http://thinkpython2.com/code/polygon.py}도 필요할 것이다.
+
 
 \end{exercise}
 
 \begin{exercise}
 
-Read about spirals at \url{http://en.wikipedia.org/wiki/Spiral}; then
-write a program that draws an Archimedian spiral (or one of the other
-kinds).  Solution: \url{http://thinkpython2.com/code/spiral.py}.
+  \url{http://en.wikipedia.org/wiki/Spiral}에서 나선에 대해 읽은 후
+  아르케메데스의 나선(또는 그와 유사한 나선)을 그리는 프로그램을 작성해
+  보라.  해답은 \url{http://thinkpython2.com/code/spiral.py}.
 \index{spiral}
 \index{Archimedian spiral} 
 
 \end{exercise}
 
 
-\chapter{Conditionals and recursion}
-
-The main topic of this chapter is the {\tt if} statement, which
-executes different code depending on the state of the program.
-But first I want to introduce two new operators: floor division
-and modulus.
+\chapter{조건문과 재귀문}
+%Conditionals and recursion
+프로그램의 상태에 따라 다른 코드를 실행하는 {\tt if} 문이 이 장의 핵심
+주제이다.  그 전에 내림 나눗셈 연산자와 나머지 연산자를 살펴보자.
 
 
-\section{Floor division and modulus}
+\section{내림 나눗셈과 나머지 연산자}
+%Floor division and modulus
 
-The {\bf floor division} operator, \verb"//", divides
-two numbers and rounds down to an integer.  For example, suppose the
-run time of a movie is 105 minutes.  You might want to know how
-long that is in hours.  Conventional division
-returns a floating-point number:
-
+%{\
+{\bf 내림 나눗셈} 연산자 \verb"//"는 두 수를 나누어 얻은 결과 값의 정수 값을 취한다.  예를 들어, 105분 길이의 영화가 있다고 했을 때 몇 시간짜리 영화인지 궁금할 때가 있다.  이런 경우 일반 나눗셈을 사용하면 부동소수점 값을 얻는다. 
 \begin{verbatim}
 >>> minutes = 105
 >>> minutes / 60
 1.75
 \end{verbatim}
 
-But we don't normally write hours with decimal points.  Floor
-division returns the integer number of hours, dropping the
-fraction part:
+하지만, 일반적으로 시간을 소수점으로 표현하지 않는다. 내림 나눗셈은
+소수점 부분을 버리고 정수부분만 리턴한다.
+
 
 \begin{verbatim}
 >>> minutes = 105
@@ -3479,7 +3473,7 @@ fraction part:
 1
 \end{verbatim}
 
-To get the remainder, you could subtract off one hour in minutes:
+나머지를 원하면 60분에서 계산된 시간 값을 제외한 나머지 분을 빼면 된다. 
 
 \begin{verbatim}
 >>> remainder = minutes - hours * 60
@@ -3494,8 +3488,8 @@ To get the remainder, you could subtract off one hour in minutes:
 \index{modulus operator}
 \index{operator!modulus}
 
-An alternative is to use the {\bf modulus operator}, \verb"%", which
-divides two numbers and returns the remainder.
+이런 복잡한 계산 대신 나눗셈 후 나머지 값을 리턴하는 {\bf 나머지
+  연산자} \verb"%"를 사용할 수 있다.
 
 \begin{verbatim}
 >>> remainder = minutes % 60
@@ -3503,33 +3497,29 @@ divides two numbers and returns the remainder.
 45
 \end{verbatim}
 %
-The modulus operator is more useful than it seems.  For
-example, you can check whether one number is divisible by another---if
-{\tt x \% y} is zero, then {\tt x} is divisible by {\tt y}.
+나머지 연산자는 보기보다 매우 유용한다.  한 가지 예를 들어 보면, 나머지
+연산자는 어떤 값이 서로 나누어 떨어지는 지 확인할 때 쓸 수있다.  {\tt
+  x \% y}가 영이라면 {\tt x}는 {\tt y}로 나누어 떨어진다.
 \index{divisibility}
 
-Also, you can extract the right-most digit
-or digits from a number.  For example, {\tt x \% 10} yields the
-right-most digit of {\tt x} (in base 10).  Similarly {\tt x \% 100}
-yields the last two digits.
+또한, 어떤 숫자의 가장 오른쪽 자리수를 얻을 때 나머지 연산자를 쓸 수
+있다.  {\tt x \% 10}을 계산하면 {\tt x}(십진수라 가정)의 1의 자리 값을
+얻는다.  마찬가지로 {\tt x \% 100}을 하면 마지막 두 자리 수를 얻는다.
 
-If you are using Python 2, division works differently.  The
-division operator, \verb"/", performs floor division if both
-operands are integers, and floating-point division if either
-operand is a {\tt float}.
+Python 2를 사용 중이라면 나눗셈은 다르게 동작한다.  나눗셈 연산자
+\verb"/"은 두 수가 모두 정수이면 내림 나눗셈을하고 두 값 중 하나라도
+{\tt 실수} 형면 부동소수점 나눗셈을 한다.
 \index{Python 2}
 
 
-\section{Boolean expressions}
+\section{불 표현식}
+%Boolean expressions
 \index{boolean expression}
 \index{expression!boolean}
 \index{logical operator}
 \index{operator!logical}
 
-A {\bf boolean expression} is an expression that is either true
-or false.  The following examples use the 
-operator {\tt ==}, which compares two operands and produces
-{\tt True} if they are equal and {\tt False} otherwise:
+{\bf 불 표현식(boolean expression)}은 참또는 거짓을 나타내는 표현식이다.  다음의 예들은 두 피연산자를 비교하는 {\tt ==} 연산자를 사용한다.  두 값이 동일하면 {\tt True(참)}을 다르면 {\tt False(거짓)}이다. 
 
 \begin{verbatim}
 >>> 5 == 5
@@ -3538,8 +3528,8 @@ True
 False
 \end{verbatim}
 %
-{\tt True} and {\tt False} are special
-values that belong to the type {\tt bool}; they are not strings:
+이 값은 문자열이 아니고, {\tt bool(불)} 데이터 형에 속한{\tt True}와
+{\tt False}는 특별한 값이다.
 \index{True special value}
 \index{False special value}
 \index{special value!True}
@@ -3554,36 +3544,34 @@ values that belong to the type {\tt bool}; they are not strings:
 <class 'bool'>
 \end{verbatim}
 %
-The {\tt ==} operator is one of the {\bf relational operators}; the
-others are:
+{\tt ==} 연산자는 {\bf 관계 연산자(relational operator)} 중 하나이다.
+나머지는 다음과 같다.
 
 \begin{verbatim}
-      x != y               # x is not equal to y
-      x > y                # x is greater than y
-      x < y                # x is less than y
-      x >= y               # x is greater than or equal to y
-      x <= y               # x is less than or equal to y
+      x != y               # x 는 y와 같지 않음
+      x > y                # x 는 y보다 큼
+      x < y                # x 는 y보다 작음
+      x >= y               # x 는 y보다 크거나 같음
+      x <= y               # x 는 y보다 작거나 같음 y
 \end{verbatim}
 %
-Although these operations are probably familiar to you, the Python
-symbols are different from the mathematical symbols.  A common error
-is to use a single equal sign ({\tt =}) instead of a double equal sign
-({\tt ==}).  Remember that {\tt =} is an assignment operator and
-{\tt ==} is a relational operator.   There is no such thing as
-{\tt =<} or {\tt =>}.
+이 연산자들이 익숙해 보일 수 있지만, Python에서 사용하는 기호가 수학
+기호와 다르다.  가장 흔한 실수는 하나의 등호({\tt =})를 써서 두 값이
+같은지 비교((\tt ==})하는 것이다.  {\tt =}는 할당 연산자이고 {\tt ==}가
+관계 연산자인 것을 기억해야 한다.  그리고 {\tt =<}나 {\tt =>}와 같은
+연산자는 없다.
+
 \index{relational operator}
 \index{operator!relational}
 
 
-\section {Logical operators}
-\index{logical operator}
-\index{operator!logical}
-
-There are three {\bf logical operators}: {\tt and}, {\tt
-or}, and {\tt not}.  The semantics (meaning) of these operators is
-similar to their meaning in English.  For example,
-{\tt x > 0 and x < 10} is true only if {\tt x} is greater than 0
-{\em and} less than 10.
+\section {논리 연산자}
+%Logical operators
+\index{logical operator} \index{operator!logical} 세 개의 {\bf 논리
+  연산자(logical operator)}가 있다. 각각은 {\tt and}, {\tt or}, 그리고
+{\tt not}이다.  이 연산자들의 의미는 영어에서의 각 단어의 의미와 같다.
+예를 들어, {\tt x > 0 and x < 10} 은 {\tt x}가 0보다 크{\em고} 10보다
+10보다 작을 때 참이 된다.
 \index{and operator}
 \index{or operator}
 \index{not operator}
@@ -3591,26 +3579,25 @@ similar to their meaning in English.  For example,
 \index{operator!or}
 \index{operator!not}
 
-{\tt n\%2 == 0 or n\%3 == 0} is true if {\em either or both} of the
-conditions is true, that is, if the number is divisible by 2 {\em or}
-3.
+{\tt n\%2 == 0 or n\%3 == 0} 은 {\em 둘 중 하나만} 또는 {\em둘 다} 참일
+때 참이 된다.  즉, 2 {\em 또는} 3으로 나누어 지거는 경우이다.
 
-Finally, the {\tt not} operator negates a boolean
-expression, so {\tt not (x > y)} is true if {\tt x > y} is false,
-that is, if {\tt x} is less than or equal to {\tt y}.
+마지막으로 {\tt not} 연산자는 불 표현식의 반대 값을 취한다.  {\tt not
+  (x > y)}는 {\tt x > y}가 거짓일 때 참이 된다.  즉, {\tt x}가 {\tt
+  y}보다 작거나 같은 경우이다.
 
-Strictly speaking, the operands of the logical operators should be
-boolean expressions, but Python is not very strict.
-Any nonzero number is interpreted as {\tt True}:
+정확하게 말하면, 논리 연산자의 피연산자는 불 표현식이어야하지만,
+Python이 그렇게 엄격하지는 않다.  0이 아닌 어떤 수이기만 하면 {\tt
+  True}으로 인식한다.
 
 \begin{verbatim}
 >>> 42 and True
 True
 \end{verbatim}
 %
-This flexibility can be useful, but there are some subtleties to
-it that might be confusing.  You might want to avoid it (unless
-you know what you are doing).
+이러한 유연성이 도움이 될 때도 있지만, 미묘한 부분도 있기 때문에 혼돈이
+있을 수도 있다.  이렇게 사용하는 것은 피하는게 좋다(뭘 하는지 정확히
+알고 있다면 모를까).
 
 
 \section{Conditional execution}
