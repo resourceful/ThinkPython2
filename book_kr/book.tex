@@ -3557,7 +3557,7 @@ False
 %
 이 연산자들이 익숙해 보일 수 있지만, Python에서 사용하는 기호가 수학
 기호와 다르다.  가장 흔한 실수는 하나의 등호({\tt =})를 써서 두 값이
-같은지 비교((\tt ==})하는 것이다.  {\tt =}는 할당 연산자이고 {\tt ==}가
+같은지 비교({\tt ==})하는 것이다.  {\tt =}는 할당 연산자이고 {\tt ==}가
 관계 연산자인 것을 기억해야 한다.  그리고 {\tt =<}나 {\tt =>}와 같은
 연산자는 없다.
 
@@ -3640,7 +3640,7 @@ if x > 0:
 
 \begin{verbatim}
 if x < 0:
-    pass          # TODO: need to handle negative values!
+    pass          # TODO: 음수 처리해야 함!
 \end{verbatim}
 %
 
@@ -3657,9 +3657,9 @@ execution)''이다.  두 가지 대안이 존재하고 조건 검사를 통해 �
 
 \begin{verbatim}
 if x % 2 == 0:
-    print('x is even')
+    print('x는 짝수')
 else:
-    print('x is odd')
+    print('x는 음수')
 \end{verbatim}
 %
 {\tt x}를 2로 나눈 나머지가 0이라면 {\tt x}가 짝수이고, 프로그램은
@@ -3864,70 +3864,70 @@ $n-1$번 {\tt s}를 출력하도록 자기 자신을 다시 호출한다.  결�
 \index{loop!for}
 
 
-\section{Stack diagrams for recursive functions}
+\section{재귀 함수의 스택 상태도}
+%Stack diagrams for recursive functions
 \label{recursive.stack}
 \index{stack diagram}
 \index{function frame}
 \index{frame}
 
-In Section~\ref{stackdiagram}, we used a stack diagram to represent
-the state of a program during a function call.  The same kind of
-diagram can help interpret a recursive function.
+\ref{stackdiagram}절에서 함수 호출 중에 프로그램의 상태를 스택 상태도로
+표현하였었다.  똑같은 그림을 재귀문을 이해하는데도 쓸 수 있다.
 
-Every time a function gets called, Python creates a
-frame to contain the function's local variables and parameters.
-For a recursive function, there might be more than one frame on the
-stack at the same time.
+함수가 호출될 때마다 Python은 프레임을 생성하여 함수의 지역 변수와 매개
+변수를 저장한다.  재귀문을 쓰게 되면 스택에 하나 이상의 프레임이
+동시에 여러 개가 존재할 수 있다.
 
-Figure~\ref{fig.stack2} shows a stack diagram for {\tt countdown} called with
-{\tt n = 3}.
+그림~\ref{fig.stack2}은 {\tt countdown}을 {\tt n = 3}을 인자로 하여
+호출했을 때의 스택 상태도를 나타낸다.
 
 \begin{figure}
 \centerline
 {\includegraphics[scale=0.8]{figs/stack2.pdf}}
-\caption{Stack diagram.}
+\caption{스택 상태도.}
 \label{fig.stack2}
 \end{figure}
 
-
-As usual, the top of the stack is the frame for \verb"__main__".
-It is empty because we did not create any variables in 
-\verb"__main__" or pass any arguments to it.
+스택의 최상위 프레임에 \verb"__main__"가 있다.  프레임에 아무 것도 없는
+이유는 \verb"__main__"가 어떤 변수도 생성하지 않았고 인자도 전달받지
+못했기 때문이다.
 \index{base case}
 \index{recursion!base case}
 
-The four {\tt countdown} frames have different values for the
-parameter {\tt n}.  The bottom of the stack, where {\tt n=0}, is
-called the {\bf base case}.  It does not make a recursive call, so
-there are no more frames.
-
-As an exercise, draw a stack diagram for \verb"print_n" called with
-\verb"s = 'Hello'" and {\tt n=2}.
-Then write a function called \verb"do_n" that takes a function
-object and a number, {\tt n}, as arguments, and that calls
-the given function {\tt n} times.
+네 개의 {\tt countdown} 프레임들은 매개 변수 {\tt n}이 모두 다르다.
+{\tt n = 0}이 있는 스택 프레임을 {\bf 기준 케이스(base case)}라
+부른다.  더 이상 재귀 호출을 하지 않기 때문에 그 이하로는 프레임이
+없다.
 
 
-\section{Infinite recursion}
+연습삼아 \verb"s = 'Hello'"와 {\tt n=2}를 인자로 \verb"print_n"가
+호출되었을 때의 스택 상태도를 그려보자.  그리고 함수 객체와 {\tt n}을
+인자로 하는 \verb"do_n" 함수를 만들어서 그 함수를 {\tt n}번 호출해
+보자.
+
+
+\section{무한 재귀문}
+%Infinite recursion
 \index{infinite recursion}
 \index{recursion!infinite}
 \index{runtime error}
 \index{error!runtime}
 \index{traceback}
 
-If a recursion never reaches a base case, it goes on making
-recursive calls forever, and the program never terminates.  This is
-known as {\bf infinite recursion}, and it is generally not
-a good idea.  Here is a minimal program with an infinite recursion:
+재귀문이 기준 케이스에 도달하지 못한다면 재귀문은 끝없이 호출되고
+프로그램은 절대로 종료하지 않는다.  이것이 {\bf 무한 재귀문(infinite
+  recursion)}이고 일반적으로 나쁘다.   무한 재귀문의 한 짧은
+예를 살펴보자.
+
 
 \begin{verbatim}
 def recurse():
     recurse()
 \end{verbatim}
 %
-In most programming environments, a program with infinite recursion
-does not really run forever.  Python reports an error
-message when the maximum recursion depth is reached:
+대부분의 프로그래밍 환경에서 무한 재귀문을 갖는 프로그램이 무한히
+동작하는 일은 없다.  프로그램이 최대 재귀 가능 횟수에 도달하면 Python은
+오류 메시지를 보고 한다.
 \index{exception!RuntimeError}
 \index{RuntimeError}
 
@@ -3942,28 +3942,28 @@ message when the maximum recursion depth is reached:
 RuntimeError: Maximum recursion depth exceeded
 \end{verbatim}
 %
-This traceback is a little bigger than the one we saw in the
-previous chapter.  When the error occurs, there are 1000
-{\tt recurse} frames on the stack!
+이 트레이스백은 이 전 장에서 살펴보았던 보다 좀 더 길다.  오류가
+발생하면서 스택에 1,000개의 {\tt recurse} 프레임이 생겼다.
 
-If you encounter an infinite recursion by accident, review
-your function to confirm that there is a base case that does not
-make a recursive call.  And if there is a base case, check whether
-you are guaranteed to reach it.
+실수로 무한 재귀문을 만나게 되면 재귀 호출에 기준 케이스가 있는지
+함수를 확인해야 한다.  기준 케이스가 있다면 그 부분에 도달 가능한지
+확인해야 한다.
 
 
-\section{Keyboard input}
+
+\section{키보드 입력}
+%Keyboard input
 \index{keyboard input}
 
-The programs we have written so far accept no input from the user.
-They just do the same thing every time.
+지금까지 작성한 모든 프로그램은 사용자 입력이 없었다.  실행하면
+똑같은 동작만 했다.
 
-Python provides a built-in function called {\tt input} that
-stops the program and
-waits for the user to type something.  When the user presses {\sf
-  Return} or {\sf Enter}, the program resumes and \verb"input"
-returns what the user typed as a string.  In Python 2, the same
-function is called \verb"raw_input".
+Python은 {\tt input}이라는 내장 함수를 제공한다.  이 함수는 잠시 멈춰서
+사용자가 입력하기를 기다린다.  사용자가 {\sf Return} 또는 {\sf
+  Enter}키를 누르면 프로그램은 계속 동작하고 \verb"input"은 사용자가
+입력한 문자열을 리턴한다.  Python 2에서는 똑같은 일을 하는 함수를
+\verb"raw_input"이라 부른다.
+
 \index{Python 2}
 \index{input function}
 \index{function!input}
@@ -3975,71 +3975,69 @@ What are you waiting for?
 'What are you waiting for?'
 \end{verbatim}
 %
-Before getting input from the user, it is a good idea to print a
-prompt telling the user what to type.  \verb"input" can take a
-prompt as an argument:
+사용자로 부터 입력을 받기 전에 어떤 것을 입력할지 알려주는 것이 좋다.
+\verb"input"는 인자로 프롬프트의 내용을 갖는다.
 \index{prompt}
 
 \begin{verbatim}
->>> name = input('What...is your name?\n')
-What...is your name?
-Arthur, King of the Britons!
+>>> name = input('당신은 누구죠?\n')
+당신은 누구죠?
+영국의 왕, 아서!
 >>> name
-'Arthur, King of the Britons!'
+'영국의 왕, 아서!'
 \end{verbatim}
 %
-The sequence \verb"\n" at the end of the prompt represents a {\bf
-  newline}, which is a special character that causes a line break.
-That's why the user's input appears below the prompt.  \index{newline}
+프롬프트의 마지막 부분의 \verb"\n"은 {\bf 새 줄(newline)}을 나타내는
+특수 기호로 줄을 바꾼다. 그렇기 때문에 사용자 입력 위치가 프롬프트 아래에 있다. 
+\index{newline}
 
-If you expect the user to type an integer, you can try to convert
-the return value to {\tt int}:
+정수를 입력하기를 바란다면 리턴 값을 {\tt int}으로 변환할 수 있다. 
 
 \begin{verbatim}
->>> prompt = 'What...is the airspeed velocity of an unladen swallow?\n'
+>>> prompt = '짐을 메달고 있지 않은 제비의 속도는?\n'
 >>> speed = input(prompt)
-What...is the airspeed velocity of an unladen swallow?
+짐을 메달고 있지 않은 제비의 속도는?
 42
 >>> int(speed)
 42
 \end{verbatim}
 %
-But if the user types something other than a string of digits,
-you get an error:
+하지만 사용자가 숫자 말고 다른 것을 입력하면 오류가 발생한다. 
 
 \begin{verbatim}
 >>> speed = input(prompt)
-What...is the airspeed velocity of an unladen swallow?
-What do you mean, an African or a European swallow?
+짐을 메달고 있지 않은 제비의 속도는?
+그 제비가 아프리카 제비야 아니면 영국 제비야?
 >>> int(speed)
 ValueError: invalid literal for int() with base 10
 \end{verbatim}
 %
-We will see how to handle this kind of error later.
+이런 류의 오류를 다루는 법을 나중에 보도록 하겠다. 
 \index{ValueError}
 \index{exception!ValueError}
 
 
-\section{Debugging}
+\section{디버깅}
+%Debugging
 \label{whitespace}
 \index{debugging}
 \index{traceback}
 
-When a syntax or runtime error occurs, the error message contains
-a lot of information, but it can be overwhelming.  The most
-useful parts are usually:
+문법 오류나 실행 중에 발생하는 오류에는 많은 정보가 담겨 있다.  때로는
+벅차게 많을 수도 있다.  그 중에 중요한 정보들은 다음과 같다. 
+
 
 \begin{itemize}
 
-\item What kind of error it was, and
+\item 어떤 종류의 오류인가
 
-\item Where it occurred.
+\item 어디서 발생했는가
 
 \end{itemize}
 
-Syntax errors are usually easy to find, but there are a few
-gotchas.  Whitespace errors can be tricky because spaces and
-tabs are invisible and we are used to ignoring them.
+문법 오류는 대체적으로 찾기가 쉽지만 몇 개는 눈에 잘 안 띄기도 한다.
+사이띄기와 탭 문자 같은 공백과 관련한 오류들은 보이지 않기 때문에 쉽게
+지나치곤 한다.  그래서 찾기가 쉽지 않다.
 \index{whitespace}
 
 \begin{verbatim}
@@ -4051,18 +4049,15 @@ tabs are invisible and we are used to ignoring them.
 IndentationError: unexpected indent
 \end{verbatim}
 %
-In this example, the problem is that the second line is indented by
-one space.  But the error message points to {\tt y}, which is
-misleading.  In general, error messages indicate where the problem was
-discovered, but the actual error might be earlier in the code,
-sometimes on a previous line.
+이 예제에서의 문제는 두 번째 줄이 한 칸 들여쓰기되어 있다는 것이다.
+그렇지만 오류 메시지는 {\tt y}를 가리키고 있기 때문에 오해하기 쉽다.
+일반적으로 오류 메시지는 오류가 발견된 시점을 나타내기 때문에 실제
+오류는 코드의 이전에서 이미 있었을 수도 있다.  심지어는 전 줄에 오류가
+있었을 수도 있다.
 \index{error!runtime}
 \index{runtime error}
 
-The same is true of runtime errors.  Suppose you are trying
-to compute a signal-to-noise ratio in decibels.  The formula
-is $SNR_{db} = 10 \log_{10} (P_{signal} / P_{noise})$.  In Python,
-you might write something like this:
+실행 중 발생 오류에서도 마찬가지다.  신호대잡음비를 데시벨로 계산한다고 해보자.  계산식은 $SNR_{db} = 10 \log_{10} (P_{signal} / P_{noise})$이다.  Python에서는 이 식을 작성하면 다음과 같다. 
 
 \begin{verbatim}
 import math
@@ -4073,7 +4068,7 @@ decibels = 10 * math.log10(ratio)
 print(decibels)
 \end{verbatim}
 %
-When you run this program, you get an exception:
+이 프로그램을 실행하면 예외처리가 된다. 
 %
 \index{exception!OverflowError}
 \index{OverflowError}
@@ -4085,16 +4080,15 @@ Traceback (most recent call last):
 ValueError: math domain error
 \end{verbatim}
 %
-The error message indicates line 5, but there is nothing
-wrong with that line.  To find the real error, it might be
-useful to print the value of {\tt ratio}, which turns out to
-be 0.  The problem is in line 4, which uses floor division
-instead of floating-point division.
+이 오류 메시지는 5번 줄을 가리키고 있지만 그 줄에는 문제가 없다.  실제
+오류를 찾으려면 {\tt ratio}의 값을 출력해보는게 좋다.  출력해보면 0
+값을 리턴 받는다.  실제 문제는 내림 나눗셈을 하는 4번 줄에 있다.
+소수점 단위의 나눗셈을 했어야 했다.
 \index{floor division}
 \index{division!floor}
 
-You should take the time to read error messages carefully, but don't
-assume that everything they say is correct.
+오류 메시지를 읽는데 충분한 시간을 들여야 하겠지만, 그 하는 말을 모두
+참이라 믿어서는 안된다.
 
 
 \section{용어 해설}
