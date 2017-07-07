@@ -748,7 +748,7 @@ Kuang He, Wei Huang, Karen Barber, and Eric Ransom.
 % START THE BOOK
 \mainmatter
 
-\chapter{프로그래밍의 길}
+\chapter{프로그래밍의 정도}
 %The way of the program
 
 이 책의 목적은 컴퓨터 과학자처럼 생각하는 방법을 알려주는 것이다.  그
@@ -764,7 +764,7 @@ Kuang He, Wei Huang, Karen Barber, and Eric Ransom.
 해결이라는 것은 문제를 정의한 후 해답을 찾기 위해 창의적으로 생각하여
 얻은 해답을 정확하고 명료하게 표현하는 것이다.  나중에 알게 되겠지만,
 프로그래밍을 배우는 과정은 문제 해결 능력을 키우는 최고의 기회이다.
-그래서, 이 장의 제목을 ``프로그래밍의 길''이라고 지었다.
+그래서, 이 장의 제목을 ``프로그래밍의 정도''라 지었다.
 
 
 어떤 수준에서는 프로그래밍을 배우게 될 것이다.  그 자체로도 매우 유용한
@@ -4346,32 +4346,31 @@ def draw(t, length, n):
 %Fruitful functions
 \label{fruitchap}
 
-Many of the Python functions we have used, such as the math
-functions, produce return values.  But the functions we've written
-are all void: they have an effect, like printing a value
-or moving a turtle, but they don't have a return value.  In
-this chapter you will learn to write fruitful functions.
+우리가 사용한 수학 함수와 같은 많은 Python 함수들은 리턴 값이 있지만,
+우리가 작성한 함수들은 리턴 값이 없다.  대신 값을 출력하거나 거북이를
+이동시키는 것과 같은 영향만 있다.  이 장에서는 열매가 있는 함수에 대해
+배울 것이다.
 
 
-\section{Return values}
+
+\section{리턴 값}
+%Return values
 \index{return value}
 
-Calling the function generates a return
-value, which we usually assign to a variable or use as part of an
-expression.
+함수 호출에는 리턴 값이 있는데, 보통은 이 값을 변수에 할당하거나 어떤
+수식의 일부로 사용한다.
+
 
 \begin{verbatim}
 e = math.exp(1.0)
 height = radius * math.sin(radians)
 \end{verbatim}
 %
-The functions we have written so far are void.  Speaking casually,
-they have no return value; more precisely,
-their return value is {\tt None}.
+지금까지 우리는 비어 있는 함수들을 작성했었다.  격식 없게는 리턴 값이
+없었고, 좀 정확하게는 그 함수들의 리턴 값은 {\tt None}이 었다.
 
-In this chapter, we are (finally) going to write fruitful functions.
-The first example is {\tt area}, which returns the area of a circle
-with the given radius:
+이 장에서는 (마침내) 열매가 있는 함수를 작성할 것이다.  첫 번째 예제는
+전달 받은 반지름으로 원의 넓이를 리턴하는 {\tt area} 함수이다.
 
 \begin{verbatim}
 def area(radius):
@@ -4379,12 +4378,11 @@ def area(radius):
     return a
 \end{verbatim}
 %
-We have seen the {\tt return} statement before, but in a fruitful
-function the {\tt return} statement includes
-an expression.  This statement means: ``Return immediately from
-this function and use the following expression as a return value.''
-The expression can be arbitrarily complicated, so we could
-have written this function more concisely:
+우리가 봤던 열매가 있는 함수에서의 {\tt
+  return}문은  수식이 포함되 있었다.  리턴문은 ``리턴 값으로
+따라오는 수식을 사용하여 즉시 리턴하라''는 의미를 갖고 있다.  리턴할
+수식이 복잡해도 괜찮기 때문에 이 예제의 함수를 좀 더 간결하게 작성 해
+볼 수도 있다.
 \index{return statement}
 \index{statement!return}
 
@@ -4393,13 +4391,12 @@ def area(radius):
     return math.pi * radius**2
 \end{verbatim}
 %
-On the other hand, {\bf temporary variables} like {\tt a} can make
-debugging easier.
+그렇기는 하지만, {\bf 임시 변수}로 사용한 {\tt a}가 있어 좀 더 쉽게
+디버깅할 수도 있다.
 \index{temporary variable}
 \index{variable!temporary}
 
-Sometimes it is useful to have multiple return statements, one in each
-branch of a conditional:
+때로는 조건문의 분기마다 리턴문이 있는 경우도 있다. 
 
 \begin{verbatim}
 def absolute_value(x):
@@ -4409,18 +4406,15 @@ def absolute_value(x):
         return x
 \end{verbatim}
 %
-Since these {\tt return} statements are in an alternative conditional,
-only one runs.
+각 {\tt return}문이 선택지마다 있기 때문에 그 중 어느 하나만 실행된다. 
 
-As soon as a return statement runs, the function
-terminates without executing any subsequent statements.
-Code that appears after a {\tt return} statement, or any other place
-the flow of execution can never reach, is called {\bf dead code}.
+리턴문이 실행되면 실행 중이던 함수는 다음 문장을 수행하지 않고 즉시
+종료한다.  {\tt return}문 이후의 문장이나 실행의 흐름 상 도달하지 않는
+코드를 {\bf 죽은 코드(dead code)}라 부른다.
 \index{dead code}
 
-In a fruitful function, it is a good idea to ensure
-that every possible path through the program hits a
-{\tt return} statement.  For example:
+열매가 있는 함수에서는 프로그램의 어떤 실행 흐름이더라도 {\tt
+  return}문에 도달하도록 하는 것이 좋다.  예를 들어보자.
 
 \begin{verbatim}
 def absolute_value(x):
@@ -4430,11 +4424,9 @@ def absolute_value(x):
         return x
 \end{verbatim}
 %
-This function is incorrect because if {\tt x} happens to be 0,
-neither condition is true, and the function ends without hitting a
-{\tt return} statement.  If the flow of execution gets to the end
-of a function, the return value is {\tt None}, which is not
-the absolute value of 0.
+이 함수는 잘못되었다.  만약 {\tt x}가 0이면 두 선택지 모두 거짓이
+된다.  그러면 {\tt return}문에 도달하지 않고 종료하게 된다.  이 경우의
+리턴 값은 {\tt None}이지 0의 절대치가 아니다.
 \index{None special value}
 \index{special value!None}
 
@@ -4443,94 +4435,88 @@ the absolute value of 0.
 None
 \end{verbatim}
 %
-By the way, Python provides a built-in function called 
-{\tt abs} that computes absolute values.
+참고로, Python의 내부 함수 중에는 절대치를 계산하는 {\tt abs} 함수가 있다. 
 \index{abs function}
 \index{function!abs}
 
-As an exercise, write a {\tt compare} function
-takes two values, {\tt x} and {\tt y}, and returns {\tt 1} if {\tt x > y},
-{\tt 0} if {\tt x == y}, and {\tt -1} if {\tt x < y}.
+연습 문제로 {\tt x}와 {\tt y} 두 수를 받아 {\tt x > y}이면 {\tt 1}을
+리턴하고 {\tt x == y}이면 {\tt 0}을 그리고 {\tt x < y}이면 {\tt -1}을
+리턴하는 {\tt compare} 함수를 작성해보자.
 \index{compare function}
 \index{function!compare}
 
 
-\section{Incremental development}
+\section{점진적 개발}
+%Incremental development
 \label{incremental.development}
 \index{development plan!incremental}
 
-As you write larger functions, you might find yourself
-spending more time debugging.
+큰 함수를 작성하다 보면 디버깅에 더 많은 시간을 쓰는 때가 있다. 
 
-To deal with increasingly complex programs,
-you might want to try a process called
-{\bf incremental development}.  The goal of incremental development
-is to avoid long debugging sessions by adding and testing only
-a small amount of code at a time.
+엄청나게 복잡한 프로그램을 작성하기 위해 {\bf 점진적 개발(incremental
+  development)} 방법론을 시도해 볼 것을 권한다.  점진적 개발 방법론의
+목적은 아주 작은 크기의 코드를 추가하고 그 부분에 대한 디버깅을 하여
+디버깅에 너무 오랜 시간을 쓰는 것을 피하도록 한다.
 \index{testing!incremental development}
 \index{Pythagorean theorem}
 
-As an example, suppose you want to find the distance between two
-points, given by the coordinates $(x_1, y_1)$ and $(x_2, y_2)$.
-By the Pythagorean theorem, the distance is:
+예를 들어, $(x_1, y_1)$과 $(x_2, y_2)$의 좌표를 갖는 두 점 사이의
+거리를 잰다고 해보자.  피타고라스의 정리에 따라 거리는 다음과 같이
+계산할 수 있다.
 
 \begin{displaymath}
 \mathrm{distance} = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}
 \end{displaymath}
 %
-The first step is to consider what a {\tt distance} function should
-look like in Python.  In other words, what are the inputs (parameters)
-and what is the output (return value)?
+첫 단계는 Python에서 {\tt distance} 함수를 정의하는 것이다.  입력
+값(매개 변수)은 무엇인지 출력 값(리턴 값)은 무엇인지를 정해야 한다.
 
-In this case, the inputs are two points, which you can represent
-using four numbers.  The return value is the distance represented by
-a floating-point value.
+이 경우에는 입력 값은 네 개의 수로 이루어진 두 개의 점이다.  리턴 값은
+부동소수점으로 표현되는 거리이다.
 
-Immediately you can write an outline of the function:
+입력과 출력 값이 정해지면 함수의 구조를 잡을 수 있다. 
 
 \begin{verbatim}
 def distance(x1, y1, x2, y2):
     return 0.0
 \end{verbatim}
 %
-Obviously, this version doesn't compute distances; it always returns
-zero.  But it is syntactically correct, and it runs, which means that
-you can test it before you make it more complicated.
+당연하겠지만, 이 버전의 함수는 거리를 계산할 수 없다.  이 함수는 언제는
+0만 리턴한다.  문법적으로는 정확하고 실행도 가능하다.  좀 더 복잡해지기
+전에 검사가 가능하다는 말이다.
 
-To test the new function, call it with sample arguments:
+함수를 시험해 보려면 샘플 인자 값으로 호출하면 된다. 
+
 
 \begin{verbatim}
 >>> distance(1, 2, 4, 6)
 0.0
 \end{verbatim}
 %
-I chose these values so that the horizontal distance is 3 and the
-vertical distance is 4; that way, the result is 5, the hypotenuse 
-of a 3-4-5 triangle. When testing a function, it is
-useful to know the right answer.
+두 점 사이의 수평 거리가 3 차이나고 수직 거리가 4 차이 나도록 점들을
+선택했다.  피타고라스의 수에 따라 직각 삼각형의 세 변의 길이의 비가
+3:4:5 이기 때문에 결과는 5가 되야 한다.  정답을 알면 함수 검사가
+수월해지는 법이다.
 \index{testing!knowing the answer}
 
-At this point we have confirmed that the function is syntactically
-correct, and we can start adding code to the body.
-A reasonable next step is to find the differences
-$x_2 - x_1$ and $y_2 - y_1$.  The next version stores those values in
-temporary variables and prints them.
+이제 이 함수가 문법적으로 정확하다는 것을 확인했으니 내용에 코드를
+추가해도 된다.  다음으로 밟아야 할 순서는 $x_2 - x_1$과 $y_2 - y_1$의
+계산으로 점 간의 차를 구하는 것이다.  다음 버전의 함수는 차를 계산하고
+임시 변수에 저장한 후 화면에 표시하는 것이다.
+
 
 \begin{verbatim}
 def distance(x1, y1, x2, y2):
     dx = x2 - x1
     dy = y2 - y1
-    print('dx is', dx)
-    print('dy is', dy)
+    print('dx는', dx)
+    print('dy는', dy)
     return 0.0
 \end{verbatim}
 %
-If the function is working, it should display \verb"dx is 3" and 
-\verb"dy is 4".  If so, we know that the function is getting the right
-arguments and performing the first computation correctly.  If not,
-there are only a few lines to check.
+함수가 동작한다면, \verb"dx는 3" 그리고 \verb"dy는 4"를 출력할 것이다.  그리고 그렇게 출력되었다면 인자도 함수에 제대로 전달했고 첫 계산도 정확히 수행했다는 것을 알 수 있다.  만약 잘못 나왔다면 검사해야 할 코드가 몇 줄 되지 않는 것에 위안을 얻으면 된다.
 
-Next we compute the sum of squares of {\tt dx} and {\tt dy}:
+그 다음 과정은 {\tt dx}와 {\tt dy}의 제곱의 합을 계산해야 한다. 
 
 \begin{verbatim}
 def distance(x1, y1, x2, y2):
@@ -4541,9 +4527,9 @@ def distance(x1, y1, x2, y2):
     return 0.0
 \end{verbatim}
 %
-Again, you would run the program at this stage and check the output
-(which should be 25).
-Finally, you can use {\tt math.sqrt} to compute and return the result:
+마찬가지로, 변경한 코드를 실행해보고 결과가 맞는지 검사해봐야
+한다(결과는 25다).  마지막으로 {\tt math.sqrt}를 써서 결과를 리턴하면
+된다.
 \index{sqrt}
 \index{function!sqrt}
 
@@ -4556,76 +4542,65 @@ def distance(x1, y1, x2, y2):
     return result
 \end{verbatim}
 %
-If that works correctly, you are done.  Otherwise, you might
-want to print the value of {\tt result} before the return
-statement.
+지금까지 제대로 동작했다면, 다 끝났다.  확인하기 원한다면 리턴하기 전에
+{\tt result}를 출력하면 된다. 
 
-The final version of the function doesn't display anything when it
-runs; it only returns a value.  The {\tt print} statements we wrote
-are useful for debugging, but once you get the function working, you
-should remove them.  Code like that is called {\bf scaffolding}
-because it is helpful for building the program but is not part of the
-final product.
+함수의 최종 버전은 실행했을 때 아무 것도 출력하지 않는다.  그저 값만
+리턴할 뿐 이다.  {\tt print}문은 디버깅 때문에 포함한 것이기 때문에
+함수가 동작한다면 제거해야 한다.  이런 류의 코드를 보고 {\bf
+  발판(scaffolding)}이라 한다.  프로그램을 작성하는데 도움은 되지만
+최종 결과물의 일부는 아니기 때문이다.
 \index{scaffolding}
 
-When you start out, you should add only a line or two of code at a
-time.  As you gain more experience, you might find yourself writing
-and debugging bigger chunks.  Either way, incremental development
-can save you a lot of debugging time.
+처음 시작할 때는 한 두 줄의 코드만 추가해야 한다.  좀 더 익숙해지면 좀
+더 긴 길이의 코드를 작성하고 디버깅할 수 있게 된다.  초보이던
+전문가이던, 점진적 개발 방법론은 디버깅 시간을 엄청나게 줄일 수 있다.
 
-The key aspects of the process are:
+방법론의 핵심은 다음과 같다. 
 
 \begin{enumerate}
 
-\item Start with a working program and make small incremental changes. 
-At any point, if there is an error, you should have a good idea
-where it is.
+\item 동작하는 프로그램으로 부터 시작하여 점진적인 변화를 만들어라.  그래야 어떤 순간이라도 오류를 발견하면 어디에 원인이 있는지 쉽게 찾을 수 있다. 
 
-\item Use variables to hold intermediate values so you can
-display and check them.
+\item 중간 값들을 변수에 저장하여 출력해보고 검사 할 수 있게 만들어라
 
-\item Once the program is working, you might want to remove some of
-the scaffolding or consolidate multiple statements into compound
-expressions, but only if it does not make the program difficult to
-read.
+\item 프로그램이 동작한다면 발판으로 사용한 코드를 삭제하고 여러 줄로 작성한 문장들을 복합문으로 통합해라.  단, 통합했을 때 코드 읽기가 너무 어려워지면 안된다. 
 
 \end{enumerate}
 
-As an exercise, use incremental development to write a function
-called {\tt hypotenuse} that returns the length of the hypotenuse of a
-right triangle given the lengths of the other two legs as arguments.
-Record each stage of the development process as you go.
+연습삼아 {\tt hypotenuse}라는 함수를 만들어 보자.  이 함수는 직각
+삼각형의 빗변을 계산하는 함수로 다른 두 변의 길이를 인자로 받는다.
+개발 과정의 각 단계를 거칠 때마다 결과를 표시하도록 해보자.
 \index{hypotenuse}
 
 
 
-\section{Composition}
+\section{합성}
+%Composition
 \index{composition}
 \index{function composition}
 
-As you should expect by now, you can call one function from within
-another.  As an example, we'll write a function that takes two points,
-the center of the circle and a point on the perimeter, and computes
-the area of the circle.
+이제는 이미 알리라 생각이 되지만, 함수 내에서 다른 함수를 호출하는 것이
+가능하다.  원의 중심 점과 원주 위의 한 점을 받아 원의 면적을 계산하는
+함수로 예를 들어 보자.
 
-Assume that the center point is stored in the variables {\tt xc} and
-{\tt yc}, and the perimeter point is in {\tt xp} and {\tt yp}. The
-first step is to find the radius of the circle, which is the distance
-between the two points.  We just wrote a function, {\tt
-distance}, that does that:
+{\tt xc}와 {\tt yc}에 원의 중심 점을 저장하고 원주 위의 한 점은 {\tt
+  xp}와 {\tt yp}에 저장된다고 하자.  첫 번째 단계는 이 두 점을 사용하여
+원의 반지름을 계산하는 것이다.이미 작성한 {\tt distance} 함수를
+사용하자.
+
 
 \begin{verbatim}
 radius = distance(xc, yc, xp, yp)
 \end{verbatim}
 %
-The next step is to find the area of a circle with that radius;
-we just wrote that, too:
+다음으로 반지름을 사용하여 원의 면적을 구하자.  이것도 이미 작성했었다.
 
 \begin{verbatim}
 result = area(radius)
 \end{verbatim}
 %
-Encapsulating these steps in a function, we get:
+이 모든 단계들을 한 함수로 캡슐화 해보자.
 \index{encapsulation}
 
 \begin{verbatim}
@@ -4635,9 +4610,9 @@ def circle_area(xc, yc, xp, yp):
     return result
 \end{verbatim}
 %
-The temporary variables {\tt radius} and {\tt result} are useful for
-development and debugging, but once the program is working, we can
-make it more concise by composing the function calls:
+임시 변수 {\tt radius}와 {\tt result}는 개발과 디버깅하는 과정에서만
+유용하기 때문에 프로그램이 제대로 동작하면 다음과 같이 간결하게 함수
+호출을 합성할 수 있다.
 
 \begin{verbatim}
 def circle_area(xc, yc, xp, yp):
@@ -4645,12 +4620,14 @@ def circle_area(xc, yc, xp, yp):
 \end{verbatim}
 %
 
-\section{Boolean functions}
+\section{불 함수}
+%Boolean functions
 \label{boolean}
 
-Functions can return booleans, which is often convenient for hiding
-complicated tests inside functions.  \index{boolean function}
-For example:
+함수는 불 값을 리턴할 수 있다.  그렇게 하면 복잡한 검사문을 함수에 감출
+수 있기 때문에 유용하다.
+\index{boolean function}
+예를 살펴 보자.
 
 \begin{verbatim}
 def is_divisible(x, y):
@@ -4660,11 +4637,11 @@ def is_divisible(x, y):
         return False
 \end{verbatim}
 %
-It is common to give boolean functions names that sound like yes/no
-questions; \verb"is_divisible" returns either {\tt True} or {\tt False}
-to indicate whether {\tt x} is divisible by {\tt y}.
+불 함수의 이름은 참/거짓을 묻는 질문처럼 만드는 것이 일반적이다.
+\verb"is_divisible"은 {\tt x}가 {\tt y}로 나누어 떨어지는지 {\tt True}
+또는 {\tt False}로 리턴한다.
 
-Here is an example:
+사용 예를 보자. 
 
 \begin{verbatim}
 >>> is_divisible(6, 4)
@@ -4673,15 +4650,16 @@ False
 True
 \end{verbatim}
 %
-The result of the {\tt ==} operator is a boolean, so we can write the
-function more concisely by returning it directly:
+{\tt ==} 연산자의 결과는 참 또는 거짓이기때문에 그 결과를 바로
+리턴하도록 함수를 간결하게 작성할 수 있다.
+
 
 \begin{verbatim}
 def is_divisible(x, y):
     return x % y == 0
 \end{verbatim}
 %
-Boolean functions are often used in conditional statements:
+불 함수는 조건문에 많이 쓰인다. 
 \index{conditional statement}
 \index{statement!conditional}
 
@@ -4690,20 +4668,21 @@ if is_divisible(x, y):
     print('x is divisible by y')
 \end{verbatim}
 %
-It might be tempting to write something like:
+아래와 같이 쓰고 싶은 유혹이 들 수 있다. 
 
 \begin{verbatim}
 if is_divisible(x, y) == True:
     print('x is divisible by y')
 \end{verbatim}
 %
-But the extra comparison is unnecessary.
+두 번 검사는 불필요하다.
 
-As an exercise, write a function \verb"is_between(x, y, z)" that
-returns {\tt True} if $x \le y \le z$ or {\tt False} otherwise.
+연습삼아 \verb"is_between(x, y, z)" 함수를 작성해보자.  이 함수는 $x
+\le y \le z$이면 {\tt True}를 아니면 {\tt False}를 리턴한다.
 
 
-\section{More recursion}
+\section{또 다시 재귀문}
+%More recursion
 \label{more.recursion}
 \index{recursion}
 \index{Turing complete language}
@@ -4711,68 +4690,61 @@ returns {\tt True} if $x \le y \le z$ or {\tt False} otherwise.
 \index{Turing, Alan}
 \index{Turing Thesis}
 
-We have only covered a small subset of Python, but you might
-be interested to know that this subset is a {\em complete}
-programming language, which means that anything that can be
-computed can be expressed in this language.  Any program ever written
-could be rewritten using only the language features you have learned
-so far (actually, you would need a few commands to control devices
-like the mouse, disks, etc., but that's all).
+Python의 일부만을 다뤘지만, 지금까지 다룬 내용이 프로그래밍 언어의
+{\em 전부}라는 사실을 알았으면 좋겠다.  지금의 언어로 연산하고 싶은
+어떤 것이든 다 표현할 수 있다.  누군가가 만든 프로그램도 지금까지 배운
+것들만으로 다시 만들 수 있다(사실 마우스, 디스크같은 것들을 다루려면
+다른 명령어들이 필요하겠지만 그게 다다).
 
-Proving that claim is a nontrivial exercise first accomplished by Alan
-Turing, one of the first computer scientists (some would argue that he
-was a mathematician, but a lot of early computer scientists started as
-mathematicians).  Accordingly, it is known as the Turing Thesis.
-For a more complete (and accurate) discussion of the Turing Thesis,
-I recommend Michael Sipser's book {\em Introduction to the
-Theory of Computation}.
+이 주장을 증명하는 것은 쉽지 않은 일이긴 하지만 최초의 컴퓨터 과학자인
+앨런 튜링(Alan Turing)이 증명했다(그가 수학자라고 주장하는 사람들이
+있기는 하지만, 초창기의 대부분의 컴퓨터 과학자들인 수학자로 시작했다).
+그의 이름을 따서 튜링 명제라 한다.  이에 관한 완전하고(정확한) 논고는
+마이클 싶서(Michael Sipser)의 책 {\em Introduction to the Theory of
+  Computation}을 읽어보기를 바란다.
 
-To give you an idea of what you can do with the tools you have learned
-so far, we'll evaluate a few recursively defined mathematical
-functions.  A recursive definition is similar to a circular
-definition, in the sense that the definition contains a reference to
-the thing being defined.  A truly circular definition is not very
-useful:
+지금까지 배운 도구들로 무엇을 할 수 있는지 보이기 위해 재귀적으로
+정의된 수학 함수를 살펴보도록 하겠다.  정의하는 대상을 정의에서 다시
+사용한다는 점에서 재귀적 정의는 순환 정의와 유사하다.  순환 정의는
+그렇게 도움이 되지 않는다.
+
 
 \begin{description}
 
-\item[vorpal:] An adjective used to describe something that is vorpal.
+\item[vorpal:] vorpal한 것을 나타내는 형용사
 \index{vorpal}
 \index{circular definition}
 \index{definition!circular}
 
 \end{description}
 
-If you saw that definition in the dictionary, you might be annoyed. On
-the other hand, if you looked up the definition of the factorial
-function, denoted with the symbol $!$, you might get something like
-this:
+사전에서 이런 단어를 만나면 짜증이 날 것이다.  반면, $!$로 표기하는
+계승(factorial) 함수는 다음과 같이 정의 된다.
 %
 \begin{eqnarray*}
 &&  0! = 1 \\
 &&  n! = n (n-1)!
 \end{eqnarray*}
 %
-This definition says that the factorial of 0 is 1, and the factorial
-of any other value, $n$, is $n$ multiplied by the factorial of $n-1$.
+이 정의는 0의 계승은 1이고 어떤 값 $n$의 계승은 $n$ 곱하기 $n-1$의
+계승으로 정의된다.
 
-So $3!$ is 3 times $2!$, which is 2 times $1!$, which is 1 times
-$0!$. Putting it all together, $3!$ equals 3 times 2 times 1 times 1,
-which is 6.
+그래서, $3!$은 3 곱하기 $2!$이고, 다시 2곱하기 $1!$, 그리고 1 곱하기
+$0!$이 된다.  정리하면 $3!$은 3 곱하기 2 곱하기 1 곱하기 1이고,
+계산하면 6이다.
 \index{factorial function}
 \index{function!factorial}
 \index{recursive definition}
 
-If you can write a recursive definition of something, you can
-write a Python program to evaluate it. The first step is to decide
-what the parameters should be.  In this case it should be clear
-that {\tt factorial} takes an integer:
+어떤 것을 재귀문으로 정의하였다면 Pytho 프로그램을 써서 평가해면 된다.
+먼저, 매개 변수를 정한다.  {\tt factorial}의 경우 당연히 정수를
+전달해야 한다.
 
 \begin{verbatim}
 def factorial(n):
 \end{verbatim}
 %
-If the argument happens to be 0, all we have to do is return 1:
+인자가 0이라면 1을 리턴하면 된다.
 
 \begin{verbatim}
 def factorial(n):
@@ -4780,9 +4752,8 @@ def factorial(n):
         return 1
 \end{verbatim}
 %
-Otherwise, and this is the interesting part, we have to make a
-recursive call to find the factorial of $n-1$ and then multiply it by
-$n$:
+그 외의 경우를 다루는 방법이 흥미로운데, 재귀 호출을 써서 $n-1$의
+계승을 계산한 후 $n$으로 곱하면 된다.
 
 \begin{verbatim}
 def factorial(n):
@@ -4794,111 +4765,99 @@ def factorial(n):
         return result
 \end{verbatim}
 %
-The flow of execution for this program is similar to the flow of {\tt
-countdown} in Section~\ref{recursion}.  If we call {\tt factorial}
-with the value 3:
+이 프로그램의 실행의 흐름은 \ref{recursion}장에서 본 {\tt countdown}의
+실행 흐름과 비슷하다. {\tt factorial}의 인자로 3을 주고 시작하면 다음과
+같이 동작한다.
 
-Since 3 is not 0, we take the second branch and calculate the factorial
-of {\tt n-1}...
+
+3은 0이 아니기 때문에 두 번째 분기를 선택하여 {\tt n-1}의 계승을 계산한다. 
 
 \begin{quote}
-Since 2 is not 0, we take the second branch and calculate the factorial of
-{\tt n-1}...
+  2은 0이 아니기 때문에 두 번째 분기를 선택하여 {\tt n-1}의 계승을
+  계산한다.
+
 
 
   \begin{quote}
-  Since 1 is not 0, we take the second branch and calculate the factorial
-  of {\tt n-1}...
-
+    1은 0이 아니기 때문에 두 번째 분기를 선택하여 {\tt n-1}의 계승을
+    계산한다.
 
     \begin{quote}
-    Since 0 equals 0, we take the first branch and return 1
-    without making any more recursive calls.
+      0은 0이기 때문에 더 이상 재귀 호출을 하지 않고 첫 번째 분기를
+      선택하여 1을 리턴한다.
     \end{quote}
 
-
-  The return value, 1, is multiplied by $n$, which is 1, and the
-  result is returned.
+    리턴 값 1을  $n$과 곱한 결과를 리턴한다.  이 때, $n$은 1이다. 
   \end{quote}
 
+    리턴 값 1을  $n$과 곱한 결과를 리턴한다.  이 때, $n$은 2이다. 
 
-The return value, 1, is multiplied by $n$, which is 2, and the
-result is returned.
 \end{quote}
 
+리턴 값 2을  $n$과 곱한 결과를 리턴한다.  이 때, $n$은 3이다.  계산 결과 6이 처음 재귀 호출 과정을 시작한 함수의 리턴 값이 된다. 
 
-The return value (2) is multiplied by $n$, which is 3, and the result, 6,
-becomes the return value of the function call that started the whole
-process.
 \index{stack diagram}
 
-Figure~\ref{fig.stack3} shows what the stack diagram looks like for
-this sequence of function calls.
+그림~\ref{fig.stack3}이 함수의 실행 흐름에 따른 스택 상태도를 나타낸다. 
 
 \begin{figure}
 \centerline
 {\includegraphics[scale=0.8]{figs/stack3.pdf}}
-\caption{Stack diagram.}
+\caption{스택 상태도}
 \label{fig.stack3}
 \end{figure}
 
-The return values are shown being passed back up the stack.  In each
-frame, the return value is the value of {\tt result}, which is the
-product of {\tt n} and {\tt recurse}.
+리턴 값이 스택 위로 전달되는 것을 볼 수 있다.  각 프레임에 나타난 리턴
+값은 {\tt n}과 {\tt recurse}의 곱인 {\tt result}이다.
 \index{function frame}
 \index{frame}
 
-In the last frame, the local
-variables {\tt recurse} and {\tt result} do not exist, because
-the branch that creates them does not run.
+마지막 프레임에는 {\tt recurse}와 {\tt result}가 없다.  이 변수들을
+생성하는 분기가 실행되지 않았기 때문이다.
 
 
-\section{Leap of faith}
+
+\section{믿음의 도약}
+%Leap of faith
 \index{recursion}
 \index{leap of faith}
 
-Following the flow of execution is one way to read programs, but
-it can quickly become overwhelming.  An
-alternative is what I call the ``leap of faith''.  When you come to a
-function call, instead of following the flow of execution, you {\em
-assume} that the function works correctly and returns the right
-result.
+실행 흐름에 따라 프로그램을 읽는 것도 한 방법이기는 하지만, 코드의
+길이에 압도될 수도 있다.  그 대안으로 ``믿음의 도약(leap of faith)''을
+하는 방법을 소개하겠다.  함수 호출을 만나면 실행 흐름대로 그 함수의
+내용을 다 읽는 대신, 그 함수가 제대로 동작하고 리턴 값도 제대로
+전달한다고 가정 하자.
 
-In fact, you are already practicing this leap of faith when you use
-built-in functions.  When you call {\tt math.cos} or {\tt math.exp},
-you don't examine the bodies of those functions.  You just
-assume that they work because the people who wrote the built-in
-functions were good programmers.
+사실, 내장 함수은 이미 제대로 동작한다는 믿음을 갖고 사용했었다.  {\tt
+  math.cos}나 {\tt math.exp}를 호출 했을 때 그 함수의 내용을 일일이
+확인해보지 않았다. 그저 내장 함수들은 훌륭한 프로그래머가 작성했을
+것이라 믿고 동작할 것이라 생각했다.
 
-The same is true when you call one of your own functions.  For
-example, in Section~\ref{boolean}, we wrote a function called 
-\verb"is_divisible" that determines whether one number is divisible by
-another.  Once we have convinced ourselves that this function is
-correct---by examining the code and testing---we can use the function
-without looking at the body again.
+자신이 작성한 함수도 똑같은 믿음을 갖고 사용해도 된다.
+\ref{boolean}절에서 작성한 \verb"is_divisible"을 떠올려 보자.  이
+함수가 정확하다고 믿은 순간---코드 확인과 검사를 거친 후---그 함수의
+내용을 다시 읽어보지 않고 사용했다.
 \index{testing!leap of faith}
 
-The same is true of recursive programs.  When you get to the recursive
-call, instead of following the flow of execution, you should assume
-that the recursive call works (returns the correct result) and then ask
-yourself, ``Assuming that I can find the factorial of $n-1$, can I
-compute the factorial of $n$?''  It is clear that you
-can, by multiplying by $n$.
+재귀 프로그램도 다르지 않다.  재귀 호출을 만나면 실행 흐름을 쫓는 대신
+재귀 호출이 제대로 동작한다고 믿어보자(그리고 정확한 결과도 리턴한다고
+해보자).  그리고 ``$n-1$의 계승을 구할 수 있다고 한다면 $n$의 계승도
+계산할 수 있을까?''라고 물어야 한다.  $n$만 곱하면 되기 때문에 당연히
+가능하다.
 
-Of course, it's a bit strange to assume that the function works
-correctly when you haven't finished writing it, but that's why
-it's called a leap of faith!
+물론, 작성을 다 하지 않은 함수를 제대로 동작한다고 가정하는게 이상할 수
+있지만 그렇기 때문에 믿음의 도약이라 부르는 것이다.
 
 
-\section{One more example}
+
+\section{또 하나의 예}
+%One more example
 \label{one.more.example}
 
-\index{fibonacci function}
-\index{function!fibonacci}
-After {\tt factorial}, the most common example of a recursively
-defined mathematical function is {\tt fibonacci}, which has the
-following definition (see
-  \url{http://en.wikipedia.org/wiki/Fibonacci_number}):
+\index{fibonacci function} \index{function!fibonacci} {\tt factorial}을
+살펴보았는데, 가장 흔한 재귀적으로 정의한 수학 함수는 {\tt
+  fibonacci}이다.  정의는 다음과 같다(참고:
+\url{http://en.wikipedia.org/wiki/Fibonacci_number}).
 %
 \begin{eqnarray*}
 && \mathrm{fibonacci}(0) = 0 \\
@@ -4906,7 +4865,7 @@ following definition (see
 && \mathrm{fibonacci}(n) = \mathrm{fibonacci}(n-1) + \mathrm{fibonacci}(n-2)
 \end{eqnarray*}
 %
-Translated into Python, it looks like this:
+Python으로 해석하면 다음과 같다. 
 
 \begin{verbatim}
 def fibonacci(n):
@@ -4918,18 +4877,18 @@ def fibonacci(n):
         return fibonacci(n-1) + fibonacci(n-2)
 \end{verbatim}
 %
-If you try to follow the flow of execution here, even for fairly
-small values of $n$, your head explodes.  But according to the
-leap of faith, if you assume that the two recursive calls
-work correctly, then it is clear that you get
-the right result by adding them together.
+아무리 작은 $n$이라 할지라도 이 함수의 실행 흐름을 따라가려면 머리가
+터질 것이다.  믿음의 도약을 한다고 생각하고 두개의 재귀 호출이 제대로
+동작한다고 믿어보자.  그러면 결과들을 더했을 때 올바른 값을 얻는다는
+것이 명확해질 것이다.
 \index{flow of execution}
 
 
-\section{Checking types}
+\section{데이터 형 검사}
+%Checking types
 \label{guardian}
 
-What happens if we call {\tt factorial} and give it 1.5 as an argument?
+{\tt factorial}을 호출 할 때 인자가 1.5면 어떻게 될까?
 \index{type checking}
 \index{error checking}
 \index{factorial function}
@@ -4940,36 +4899,33 @@ What happens if we call {\tt factorial} and give it 1.5 as an argument?
 RuntimeError: Maximum recursion depth exceeded
 \end{verbatim}
 %
-It looks like an infinite recursion.  How can that be?  The function
-has a base case---when {\tt n == 0}.  But if {\tt n} is not an integer,
-we can {\em miss} the base case and recurse forever.
+무한 재귀문 오류인 것처럼 보인다.  어째서 그럴가?  {\tt n == 0}이라는
+기준 케이스도 있는데 말이다.  {\tt n}이 정수가 아니면 기준 케이스에
+도달 못하고 영원히 재귀 호출을 하게 된다.
 \index{infinite recursion}
 \index{recursion!infinite}
 
-In the first recursive call, the value of {\tt n} is 0.5.
-In the next, it is -0.5.  From there, it gets smaller
-(more negative), but it will never be 0.
+첫 번째 재귀 호출에서 {\tt n}의 값은 0.5이다.  그 다음에는 -0.5가
+된다.  그 이후에는 수는 작아지기만 하지 절대로 0은 안된다.
 
-We have two choices.  We can try to generalize the {\tt factorial}
-function to work with floating-point numbers, or we can make {\tt
-  factorial} check the type of its argument.  The first option is
-called the gamma function and it's a
-little beyond the scope of this book.  So we'll go for the second.
+두 가지 선택이 있다.  {\tt factorial} 함수를 일반화해서 부동소수점 수도
+계산할 수 있게 하거나 {\tt factorial}이 인자의 데이터 형을 검사할 수도
+있다.  첫 번째는 감마 함수라고 부르고 이 책이 다룰 수 있는 범위 밖에
+있다.  그러니 두 번째 것을 시도해보자.
 \index{gamma function}
 
-We can use the built-in function {\tt isinstance} to verify the type
-of the argument.  While we're at it, we can also make sure the
-argument is positive:
+내부 함수 중 {\tt isinstance}을 사용해서 인자의 데이터 형을 검사할 수
+있다.  그와 동시에 인자로 받은 값이 양수인지도 확인할 수 있다.
 \index{isinstance function}
 \index{function!isinstance}
 
 \begin{verbatim}
 def factorial(n):
     if not isinstance(n, int):
-        print('Factorial is only defined for integers.')
+        print('정수에 대해서만 정의되어 있음.')
         return None
     elif n < 0:
-        print('Factorial is not defined for negative integers.')
+        print('음의 정수에 대해서는 정의 안됨.')
         return None
     elif n == 0:
         return 1
@@ -4977,77 +4933,69 @@ def factorial(n):
         return n * factorial(n-1)
 \end{verbatim}
 %
-The first base case handles nonintegers; the
-second handles negative integers.  In both cases, the program prints
-an error message and returns {\tt None} to indicate that something
-went wrong:
+첫 기준 케이스는 정수가 아닌 경우를 다루고 두 번째는 음의 정수를
+다룬다.  두 경우다 프로그램은 오류 메시지를 출력 하고 무언가
+잘못되었다는 것을 표시하기 위해 {\tt None}을 리턴한다.
+
 
 \begin{verbatim}
 >>> print(factorial('fred'))
-Factorial is only defined for integers.
+정수에 대해서만 정의되어 있음.
 None
 >>> print(factorial(-2))
-Factorial is not defined for negative integers.
+음의 양수에 대해서는 정의 안됨.
 None
 \end{verbatim}
 % 
-If we get past both checks, we know that $n$ is positive or
-zero, so we can prove that the recursion terminates.
+두 검사를 통과했다면, $n$은 양수의 정수이거나 0이라는 것을 알기 때문에
+재귀문이 종료한다는 것을 증명할 수 있다.
 \index{guardian pattern}
 \index{pattern!guardian}
 
-This program demonstrates a pattern sometimes called a {\bf guardian}.
-The first two conditionals act as guardians, protecting the code that
-follows from values that might cause an error.  The guardians make it
-possible to prove the correctness of the code.
+이 프로그램은 {\bf 가디언(guardian}, 보호자{\bf)}이라는 패턴을
+사용하였다.  첫 두 조건문이 오류가 발생할만한 값들로부터 코드를
+보호하는 가디언 역할을 한다.  가디언 패턴으로 코드의 정확성을 증명할 수
+있다. 
 
-In Section~\ref{raise} we will see a more flexible alternative to printing
-an error message: raising an exception.
+\ref{raise}절에서는 오류 메시지를 출력하는 것보다 좀 더 유연한 대안인
+엑셉션(exception, 예외) 처리에 대해 살펴 볼 것이다.
 
 
-\section{Debugging}
+\section{디버깅}
+%Debugging
 \label{factdebug}
-
-Breaking a large program into smaller functions creates natural
-checkpoints for debugging.  If a function is not
-working, there are three possibilities to consider:
+큰 프로그램을 작은 함수들로 나누어 작성하는 것은 디버깅을 할 수 있는 지점들을 자연스럽게 만드는 효과가 있다.  함수가 동작하지 않을 때 검사해 볼 세가지가 있다. 
 \index{debugging} 
 
 \begin{itemize}
 
-\item There is something wrong with the arguments the function
-is getting; a precondition is violated.
+\item 함수가 전달 받는 인자에 문제가 있다. 사전 조건이 잘못되었다. 
 
-\item There is something wrong with the function; a postcondition
-is violated.
+\item 함수에 문제가 있다. 사후 조건이 잘못되었다. 
 
-\item There is something wrong with the return value or the
-way it is being used.
+\item 리턴 값 또는 그 값을 사용하는데 문제가 있다. 
 
 \end{itemize}
 
-To rule out the first possibility, you can add a {\tt print} statement
-at the beginning of the function and display the values of the
-parameters (and maybe their types).  Or you can write code
-that checks the preconditions explicitly.
+첫 가능성을 제거하려면 함수 시작부분에 {\tt print}문을 써서 매개 변수의
+값(그리고 데이터 형)을 출력해 보면 된다.  또는 사전 조건이 정확한지
+검사하는 코드를 명시적으로 작성하면 된다.
 \index{precondition}
 \index{postcondition}
 
-If the parameters look good, add a {\tt print} statement before each
-{\tt return} statement and display the return value.  If
-possible, check the result by hand.  Consider calling the
-function with values that make it easy to check the result
-(as in Section~\ref{incremental.development}).
+매개 변수가 맞아 보이면 모든 {\tt return}문 전에 {\tt print}문을
+삽입하여 리턴 값을 검사해보자.  함수 호출의 결과를 수기로도
+검산해보자.  검산이 쉬운 값을 넣어 함수를
+호출해보자(\ref{incremental.development}절을 참고하자).
 
-If the function seems to be working, look at the function call
-to make sure the return value is being used correctly (or used
-at all!).
+함수가 제대로 동작하는 것처럼 보이면 호출하는 문장에서 리턴 값을
+정확하게 사용하는지(또는 사용은 하는지) 확인해보자.
 \index{flow of execution}
 
-Adding print statements at the beginning and end of a function
-can help make the flow of execution more visible.
-For example, here is a version of {\tt factorial} with
-print statements:
+
+함수가 시작할 때 그리고 끝날 때 {\tt print}문을 넣어보면 실행 흐름을
+시각화하는데 도움이 된다. 다음은 {\tt factorial}에 {\tt print}문을 넣은
+버전이다.
 
 \begin{verbatim}
 def factorial(n):
@@ -5063,8 +5011,8 @@ def factorial(n):
         return result
 \end{verbatim}
 %
-{\tt space} is a string of space characters that controls the
-indentation of the output.  Here is the result of {\tt factorial(4)} :
+{\tt space}는 공백 문자열로 결과의 들여쓰기 정도를 나타낸다. 다음은
+{\tt factorial(4)}의 결과이다.
 
 \begin{verbatim}
                  factorial 4
@@ -5079,9 +5027,9 @@ indentation of the output.  Here is the result of {\tt factorial(4)} :
                  returning 24
 \end{verbatim}
 %
-If you are confused about the flow of execution, this kind of
-output can be helpful.  It takes some time to develop effective
-scaffolding, but a little bit of scaffolding can save a lot of debugging.
+실행 흐름이 혼란스럽다면 이런 식으로 결과를 표시하는 것도 도움이 된다.
+효과적인 발판을 만드는 것은 시간이 걸리지만 작은 발판이라할지라도
+디버깅 시간을 크게 줄일 수 있다.
 
 
 \section{용어 해설}
@@ -5089,27 +5037,26 @@ scaffolding, but a little bit of scaffolding can save a lot of debugging.
 
 \begin{description}
 
-\item[temporary variable:]  A variable used to store an intermediate value in
-a complex calculation.
+\item[임시변수(temporary variable):] 복잡한 계산의 중간 값을 저장하는데
+  사용하는 변수
 \index{temporary variable}
 \index{variable!temporary}
 
-\item[dead code:]  Part of a program that can never run, often because
-it appears after a {\tt return} statement.
+\item[죽은 코드(dead code):] 대체적으로 {\tt return}문 다음에 오는
+  코드로 프로그램에서 실행되지 않는 부분
 \index{dead code}
 
-\item[incremental development:]  A program development plan intended to
-avoid debugging by adding and testing only
-a small amount of code at a time.
+\item[점진적 개발(incremental development):] 한 번에 작은 크기의 코드를
+  추가하고 검사하여 디버깅 시간을 줄이려는 프로그램 걔발 계획
 \index{incremental development}
 
-\item[scaffolding:]  Code that is used during program development but is
-not part of the final version.
+\item[발판(scaffolding):] 프로그램 개발 중에는 사용되나 최종 버전에는
+  제외되는 코드
 \index{scaffolding}
 
-\item[guardian:]  A programming pattern that uses a conditional
-statement to check for and handle circumstances that
-might cause an error.
+\item[가디언(보호자, guardian):] 오류를 발생시킬 수도 있는 상황을
+  조건문으로 처리하거나 검사하는 프로그래밍 패턴
+
 \index{guardian pattern}
 \index{pattern!guardian}
 
@@ -5121,7 +5068,7 @@ might cause an error.
 
 \begin{exercise}
 
-Draw a stack diagram for the following program.  What does the program print?
+다음 프로그램의 스택 상태도를 그려라.  프로그램은 무엇을 표시하는가?
 \index{stack diagram}
 
 \begin{verbatim}
@@ -5150,7 +5097,7 @@ print(c(x, y+3, x+y))
 \begin{exercise}
 \label{ackermann}
 
-The Ackermann function, $A(m, n)$, is defined:
+아커만 함수 $A(m, n)$은 다음과 같이 정의 되었다. 
 
 \begin{eqnarray*}
 A(m, n) = \begin{cases} 
@@ -5160,11 +5107,11 @@ A(m-1, A(m, n-1)) & \mbox{if } m > 0 \mbox{ and } n > 0.
 \end{cases} 
 \end{eqnarray*}
 %
-See \url{http://en.wikipedia.org/wiki/Ackermann_function}.
-Write a function named {\tt ack} that evaluates the Ackermann function.
-Use your function to evaluate {\tt ack(3, 4)}, which should be 125.
-What happens for larger values of {\tt m} and {\tt n}?
-Solution: \url{http://thinkpython2.com/code/ackermann.py}.
+상세 설명은 \url{http://en.wikipedia.org/wiki/Ackermann_function}을
+참고하라.  아커만 함수를 계산하는 {\tt ack} 함수를 작성하라.  {\tt
+  ack(3, 4)}의 값을 구하고 125가 맞는지 확인하라.  {\tt m}이나 {\tt
+  n}이 더 큰 값이면 어떻게 되는가? 해답은
+\url{http://thinkpython2.com/code/ackermann.py}에 있다.
 \index{Ackermann function}
 \index{function!ack}
 
@@ -5173,15 +5120,13 @@ Solution: \url{http://thinkpython2.com/code/ackermann.py}.
 
 \begin{exercise}
 \label{palindrome}
-
-A palindrome is a word that is spelled the same backward and
-forward, like ``noon'' and ``redivider''.  Recursively, a word
-is a palindrome if the first and last letters are the same
-and the middle is a palindrome.
+회문(pallindrome)은 ``noon''과 ``redivider''처럼 단어의 순방향 철자가
+역방향 철자와 동일한 단어를 뜻한다.  재귀적으로 표현했을 때, 첫 글자와
+마지막 글자가 같고 중간 부분이 회문이면 그 단어는 회문이다.
 \index{palindrome}
 
-The following are functions that take a string argument and
-return the first, last, and middle letters:
+다음의 함수들은 문자열을 인자로 받아 첫 글자, 마지막 글자, 그리고
+중간의 글자들을 리턴한다.
 
 \begin{verbatim}
 def first(word):
@@ -5194,33 +5139,32 @@ def middle(word):
     return word[1:-1]
 \end{verbatim}
 %
-We'll see how they work in Chapter~\ref{strings}.
+동작 방식은 \ref{strings}장에서 살펴볼 것이다. 
 
 \begin{enumerate}
 
-\item Type these functions into a file named {\tt palindrome.py}
-and test them out.  What happens if you call {\tt middle} with
-a string with two letters?  One letter?  What about the empty
-string, which is written \verb"''" and contains no letters?
+\item {\tt palindrome.py}라는 이름을 함수들을 저장하고 검사해보자.  두
+  글자 길이의 단어를 {\tt middle} 함수에 인자로 전달하면 어떻게
+  되는가?  한 글자이면 어떻게 되는가? 빈 문자열 \verb"''"을 인자로
+  전달하면 어떻게 되는가?
 
-\item Write a function called \verb"is_palindrome" that takes
-a string argument and returns {\tt True} if it is a palindrome
-and {\tt False} otherwise.  Remember that you can use the
-built-in function {\tt len} to check the length of a string.
+\item 문자열을 인자로 받아 그 문자열이 회문이면 {\tt True}를 아니면
+  {\tt False}를 리턴하는 \verb"is_palindrome" 함수를 작성하라.  참고로
+  문자열의 길이를 확인하기 위해 내장 함수인 {\tt len}을 쓸 수 있다.
 
 \end{enumerate}
 
-Solution: \url{http://thinkpython2.com/code/palindrome_soln.py}.
+해답: \url{http://thinkpython2.com/code/palindrome_soln.py}.
 
 \end{exercise}
 
 \begin{exercise}
 
-A number, $a$, is a power of $b$ if it is divisible by $b$
-and $a/b$ is a power of $b$.  Write a function called
-\verb"is_power" that takes parameters {\tt a} and {\tt b}
-and returns {\tt True} if {\tt a} is a power of {\tt b}.
-Note: you will have to think about the base case.
+  어떤 수 $a$는 $b$로 나눌 수 있고 $a/b$가 $b$의 거듭제곱이면 $a$는
+  $b$의 거듭제곱이다. {\tt a}와 {\tt b}를 매개 변수로 받아 {\tt a}가
+  {\tt b}의 거듭제곱이면 {\tt True}를 리턴하는 \verb"is_power" 함수를
+  작성하라.  참고: 기준 케이스 선정이 중요하다.
+
 
 \end{exercise}
 
@@ -5229,19 +5173,19 @@ Note: you will have to think about the base case.
 \index{greatest common divisor (GCD)}
 \index{GCD (greatest common divisor)}
 
-The greatest common divisor (GCD) of $a$ and $b$ is the largest number
-that divides both of them with no remainder.  
+$a$와 $b$의 최대 공약수(the Greatest Common Divisor, GCD)는 나머지 없이
+두 수를 나눌 수 있는 가장 큰 수이다.
 
-One way to find the GCD of two numbers is based on the observation
-that if $r$ is the remainder when $a$ is divided by $b$, then $gcd(a,
-b) = gcd(b, r)$.  As a base case, we can use $gcd(a, 0) = a$.
+최대 공약수를 찾는 한 방법은 $a$을 $b$로 나눴을 때의 나머지 $r$에 대해
+$gcd(a, b) = gcd(b, r)$의 관계가 성립한다는 관찰을 사용하면 된다.  기준
+케이스로 $gcd(a, 0) = a$를 사용하라.
 
-Write a function called
-\verb"gcd" that takes parameters {\tt a} and {\tt b}
-and returns their greatest common divisor.
+매개 변수 {\tt a}와 {\tt b}를 사용하고 최대 공약수를 리턴하는
+\verb"gcd" 함수를 작성하라.
 
-Credit: This exercise is based on an example from Abelson and
-Sussman's {\em Structure and Interpretation of Computer Programs}.
+
+출처: 애벨슨(Abelson)과 서스만(Sussman)의 {\em Structure and
+  Interpretation of Computer Programs}의 예제를 참고하였다.
 
 \end{exercise}
 
