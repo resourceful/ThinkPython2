@@ -2543,7 +2543,8 @@ None
   줄 수도 있고 그렇지 않을 수도 있음
 \index{function}
 
-\item[함수 정의(function definition):]  새로운 함수를 생성하는 문장으로 함수의 이름과 매개 변수들을 지정하고 그리고 문장들을 포함함
+\item[함수 정의(function definition):] 새로운 함수를 생성하는 문장으로
+  함수의 이름과 매개 변수들을 지정하고 그리고 문장들을 포함함
 \index{function definition}
 
 \item[함수 객체(function object):] 함수 정의에 의해 생성되는 값.
@@ -2688,7 +2689,9 @@ do_twice(print_spam)
   호출하여라.  이 때, \verb"print_twice" 함수의 인자는 \verb"'spam'"을
   사용하여라.
 
-\item 함수 객체와 값을 전달 받아 해당 함수를 4번 호출하고 값은 매개 변수로 사용하는 \verb"do_four"라는 새로운 함수를 정의하여라.  이 함수의 내용에는 네 개가 아니라 두 개의 문장만 있어야 한다. 
+\item 함수 객체와 값을 전달 받아 해당 함수를 4번 호출하고 값은 매개
+  변수로 사용하는 \verb"do_four"라는 새로운 함수를 정의하여라.  이
+  함수의 내용에는 네 개가 아니라 두 개의 문장만 있어야 한다.
 
 \end{enumerate}
 
@@ -2838,7 +2841,8 @@ bob.fd(100)
 있다.  펜을 내리면 \texttt{Turtle}이 이동한 흔적을 남길 수 있다.  {\tt
   pu}와 {\tt pd}는 각각 펜을 들기와 펜 내리기를 뜻한다.
 
-직각을 그리려면 다음의 줄들을 프로그램에 추가하자(위치는 {\tt bob}을 생성한 줄과  \verb"mainloop"를 호출하는 줄 사이에 삽입하면 된다. 
+직각을 그리려면 다음의 줄들을 프로그램에 추가하자(위치는 {\tt bob}을
+생성한 줄과 \verb"mainloop"를 호출하는 줄 사이에 삽입하면 된다.
 
 \begin{verbatim}
 bob.fd(100)
@@ -3108,7 +3112,10 @@ def circle(t, r):
   circle} 함수를 부르는 사용자가 제어권을 갖도록 한다.
 \index{interface}
 
-{\bf 인터페이스(interface)}는 함수를 어떻게 쓸 수 있는지 알려주는 요약이다.  어떤 매개 변수가 있고, 함수가 무엇을 하는지 그리고 어떤 결과를 리턴하는지 알려준다.  인터페이스가 ``단순하면'' 불필요한 세부 내용을 신경 쓰지 않고 원하는 것을 얻을 수 있다. 
+{\bf 인터페이스(interface)}는 함수를 어떻게 쓸 수 있는지 알려주는
+요약이다.  어떤 매개 변수가 있고, 함수가 무엇을 하는지 그리고 어떤
+결과를 리턴하는지 알려준다.  인터페이스가 ``단순하면'' 불필요한 세부
+내용을 신경 쓰지 않고 원하는 것을 얻을 수 있다.
 
 이 예제에서는 그리려는 원의 크기를 정하기 위해 {\tt r}이 인터페이스에
 포함되어 있다.  {\tt n}은 원이 어떻게 표현되어야 하는가에 대한 정보를
@@ -3233,7 +3240,10 @@ def circle(t, r):
 
 \end{enumerate}
 
-이 과정에는 몇 가지 단점이 있다. 그 대안들은 이후에 살펴볼 것이다.  그래도 이 방법은 프로그램을 함수로 나누는 어떻게 나눌지 개발 전에 미리 알 수 없는 경우라면 충분히 의미있다.  개발하면서 설계도 같이 할 수 있기 때문이다. 
+이 과정에는 몇 가지 단점이 있다. 그 대안들은 이후에 살펴볼 것이다.
+그래도 이 방법은 프로그램을 함수로 나누는 어떻게 나눌지 개발 전에 미리
+알 수 없는 경우라면 충분히 의미있다.  개발하면서 설계도 같이 할 수 있기
+때문이다.
 
 
 \section{설명 문자열}
@@ -3455,7 +3465,11 @@ def polyline(t, n, length, angle):
 %Floor division and modulus
 
 %{\
-{\bf 내림 나눗셈} 연산자 \verb"//"는 두 수를 나누어 얻은 결과 값의 정수 값을 취한다.  예를 들어, 105분 길이의 영화가 있다고 했을 때 몇 시간짜리 영화인지 궁금할 때가 있다.  이런 경우 일반 나눗셈을 사용하면 부동소수점 값을 얻는다. 
+{\bf 내림 나눗셈} 연산자 \verb"//"는 두 수를 나누어 얻은 결과 값의 정수
+값을 취한다.  예를 들어, 105분 길이의 영화가 있다고 했을 때 몇 시간
+짜리 영화인지 궁금할 때가 있다.  이런 경우 일반 나눗셈을 사용하면
+부동소수점 값을 얻는다.
+
 \begin{verbatim}
 >>> minutes = 105
 >>> minutes / 60
@@ -3519,7 +3533,10 @@ Python 2를 사용 중이라면 나눗셈은 다르게 동작한다.  나눗셈 
 \index{logical operator}
 \index{operator!logical}
 
-{\bf 불 표현식(boolean expression)}은 참또는 거짓을 나타내는 표현식이다.  다음의 예들은 두 피연산자를 비교하는 {\tt ==} 연산자를 사용한다.  두 값이 동일하면 {\tt True(참)}을 다르면 {\tt False(거짓)}이다. 
+{\bf 불 표현식(boolean expression)}은 참또는 거짓을 나타내는
+표현식이다.  다음의 예들은 두 피연산자를 비교하는 {\tt ==} 연산자를
+사용한다.  두 값이 동일하면 {\tt True(참)}을 다르면 {\tt
+  False(거짓)}이다.
 
 \begin{verbatim}
 >>> 5 == 5
@@ -3808,8 +3825,9 @@ def countdown(n):
 1을 출력하고 자신을 호출한다.
 
 
-\begin{quote}
-{\tt countdown}은 {\tt n=0}에서 실행된다.  {\tt n}은 0이기 때문에 ``발사!''라고 화면에 표시하고 리턴한다. 
+\begin{quote} 
+{\tt countdown}은 {\tt n=0}에서 실행된다.  {\tt n}은
+  0이기 때문에 ``발사!''라고 화면에 표시하고 리턴한다.
 \end{quote}
 
 \end{quote}
@@ -4057,7 +4075,9 @@ IndentationError: unexpected indent
 \index{error!runtime}
 \index{runtime error}
 
-실행 중 발생 오류에서도 마찬가지다.  신호대잡음비를 데시벨로 계산한다고 해보자.  계산식은 $SNR_{db} = 10 \log_{10} (P_{signal} / P_{noise})$이다.  Python에서는 이 식을 작성하면 다음과 같다. 
+실행 중 발생 오류에서도 마찬가지다.  신호대잡음비를 데시벨로 계산한다고
+해보자.  계산식은 $SNR_{db} = 10 \log_{10} (P_{signal} /
+P_{noise})$이다.  Python에서는 이 식을 작성하면 다음과 같다.
 
 \begin{verbatim}
 import math
@@ -4300,7 +4320,9 @@ def draw(t, length, n):
 \begin{exercise}
 \index{Koch curve}
 
-코흐 곡선(The Koch curve)는 그림 \ref{fig.koch}처럼 보이는 프랙탈 곡선이다. 길이 $x$를 사용하여 코흐 곡선을 그려라.  그리는 방법은 다음과 같다.
+코흐 곡선(The Koch curve)는 그림 \ref{fig.koch}처럼 보이는 프랙탈
+곡선이다. 길이 $x$를 사용하여 코흐 곡선을 그려라.  그리는 방법은 다음과
+같다.
 
 
 \begin{enumerate}
@@ -4514,7 +4536,10 @@ def distance(x1, y1, x2, y2):
     return 0.0
 \end{verbatim}
 %
-함수가 동작한다면, \verb"dx는 3" 그리고 \verb"dy는 4"를 출력할 것이다.  그리고 그렇게 출력되었다면 인자도 함수에 제대로 전달했고 첫 계산도 정확히 수행했다는 것을 알 수 있다.  만약 잘못 나왔다면 검사해야 할 코드가 몇 줄 되지 않는 것에 위안을 얻으면 된다.
+함수가 동작한다면, \verb"dx는 3" 그리고 \verb"dy는 4"를 출력할 것이다.
+그리고 그렇게 출력되었다면 인자도 함수에 제대로 전달했고 첫 계산도
+정확히 수행했다는 것을 알 수 있다.  만약 잘못 나왔다면 검사해야 할
+코드가 몇 줄 되지 않는 것에 위안을 얻으면 된다.
 
 그 다음 과정은 {\tt dx}와 {\tt dy}의 제곱의 합을 계산해야 한다. 
 
@@ -4560,11 +4585,15 @@ def distance(x1, y1, x2, y2):
 
 \begin{enumerate}
 
-\item 동작하는 프로그램으로 부터 시작하여 점진적인 변화를 만들어라.  그래야 어떤 순간이라도 오류를 발견하면 어디에 원인이 있는지 쉽게 찾을 수 있다. 
+\item 동작하는 프로그램으로 부터 시작하여 점진적인 변화를 만들어라.
+  그래야 어떤 순간이라도 오류를 발견하면 어디에 원인이 있는지 쉽게 찾을
+  수 있다.
 
 \item 중간 값들을 변수에 저장하여 출력해보고 검사 할 수 있게 만들어라
 
-\item 프로그램이 동작한다면 발판으로 사용한 코드를 삭제하고 여러 줄로 작성한 문장들을 복합문으로 통합해라.  단, 통합했을 때 코드 읽기가 너무 어려워지면 안된다. 
+\item 프로그램이 동작한다면 발판으로 사용한 코드를 삭제하고 여러 줄로
+  작성한 문장들을 복합문으로 통합해라.  단, 통합했을 때 코드 읽기가
+  너무 어려워지면 안된다.
 
 \end{enumerate}
 
@@ -4794,7 +4823,8 @@ def factorial(n):
 
 \end{quote}
 
-리턴 값 2을  $n$과 곱한 결과를 리턴한다.  이 때, $n$은 3이다.  계산 결과 6이 처음 재귀 호출 과정을 시작한 함수의 리턴 값이 된다. 
+리턴 값 2을 $n$과 곱한 결과를 리턴한다.  이 때, $n$은 3이다.  계산 결과
+6이 처음 재귀 호출 과정을 시작한 함수의 리턴 값이 된다.
 
 \index{stack diagram}
 
@@ -4964,8 +4994,10 @@ None
 \section{디버깅}
 %Debugging
 \label{factdebug}
-큰 프로그램을 작은 함수들로 나누어 작성하는 것은 디버깅을 할 수 있는 지점들을 자연스럽게 만드는 효과가 있다.  함수가 동작하지 않을 때 검사해 볼 세가지가 있다. 
-\index{debugging} 
+큰 프로그램을 작은 함수들로 나누어 작성하는 것은 디버깅을 할 수 있는
+지점들을 자연스럽게 만드는 효과가 있다.  함수가 동작하지 않을 때 검사해
+볼 세가지가 있다.  
+\index{debugging}
 
 \begin{itemize}
 
@@ -5190,25 +5222,27 @@ $gcd(a, b) = gcd(b, r)$의 관계가 성립한다는 관찰을 사용하면 된�
 \end{exercise}
 
 
-\chapter{Iteration}
+\chapter{반복}
+%Iteration
 
-This chapter is about iteration, which is the ability to run
-a block of statements repeatedly.  We saw a kind of iteration,
-using recursion, in Section~\ref{recursion}.
-We saw another kind, using a {\tt for} loop,
-in Section~\ref{repetition}.  In this chapter we'll see yet another
-kind, using a {\tt while} statement.
-But first I want to say a little more about variable assignment.
+이 장에서는 문장을 되풀이하여 실행하는 기능인 반복을 다룬다.
+\ref{recursion}절에서 재귀문을 사용한 반복의 일종을 살펴봤었다.
+\ref{repetition}절에서 {\tt for} 루프도 봤었다.  이 장에서는 {\tt
+  while}문을 사용한 또 다른 반복문을 배울 것이다.  그 전에 변수 할당에
+대해 좀 더 이야기하고 시작하겠다.
 
 
-\section{Reassignment}
+\section{재할당}
+%Reassignment
 \index{assignment}
 \index{statement!assignment}
 \index{reassignment}
 
-As you may have discovered, it is legal to make more than one
-assignment to the same variable.  A new assignment makes an existing
-variable refer to a new value (and stop referring to the old value).
+같은 변수에 한 번 이상 값을 할당해도 괜찮다는 것을 이제 깨달았을
+것이다.  기존의 변수에 새로운 값을 할당하면 그 변수는 새로운 값을
+가리킨다(이전에 가리키던 값은 더 이상 가리키지 않는다).
+
+
 
 \begin{verbatim}
 >>> x = 5
@@ -5219,82 +5253,78 @@ variable refer to a new value (and stop referring to the old value).
 7
 \end{verbatim}
 %
-The first time we display 
-{\tt x}, its value is 5; the second time, its
-value is 7.
+{\tt x}는 처음에 5를 그리고 두 번째 7이라는 값을 갖는다.
 
-Figure~\ref{fig.assign2} shows what {\bf reassignment} looks
-like in a state diagram. \index{state diagram} \index{diagram!state}
+그림 \ref{fig.assign2}의 스택 상태도에 {\bf 재할당(reassignment)}를 나타냈다.  
+\index{state diagram} \index{diagram!state}
 
-At this point I want to address a common source of
-confusion.
-Because Python uses the equal sign ({\tt =}) for assignment, it is
-tempting to interpret a statement like {\tt a = b} as a
-mathematical
-proposition of equality; that is, the claim that {\tt a} and
-{\tt b} are equal.  But this interpretation is wrong.
+현 시점에서 많이들 혼돈하는 것을 집고 넘어가자.  Python에서 등호({\tt
+  =})를 사용하는데 이 기호를 수학 명제로서 {\tt a = b}를
+해석하려고한다.  수학에서는 {\tt a}와 {\tt b}가 서로 동일하다는
+주장이다.  하지만, 그렇게 해석하면 틀린 것이다. 
 \index{equality and assignment}
 
-First, equality is a symmetric relationship and assignment is not.  For
-example, in mathematics, if $a=7$ then $7=a$.  But in Python, the
-statement {\tt a = 7} is legal and {\tt 7 = a} is not.
 
-Also, in mathematics, a proposition of equality is either true or
-false for all time.  If $a=b$ now, then $a$ will always equal $b$.
-In Python, an assignment statement can make two variables equal, but
-they don't have to stay that way:
+첫째로 등가는 대칭적 관계를 나타내지만 할당은 대칭적이지 않다.  예를
+들어보자.  수학에서는 $a = 7$이면 $7 = a$이다.  Python에서는 {\tt a =
+  7 }이라는 문장은 괜찮지만 {\tt 7 = a}라는 문장은 틀린 문장이다.
+
+
+수학에서는 어떤 식이 등가라면 그 주장은 항상 참이다.  $a = b$라고 하면
+$a$는 항상 $b$와 동일하다.  Python에서 할당문은 두 변수가 서로 동일하게
+만들지만 항상 그대로 유지되는 것은 아니다.
+
 
 \begin{verbatim}
 >>> a = 5
->>> b = a    # a and b are now equal
->>> a = 3    # a and b are no longer equal
+>>> b = a    # a와 b는 같음
+>>> a = 3    # a와 b는 더 이상 같지 않음
 >>> b
 5
 \end{verbatim}
 %
-The third line changes the value of {\tt a} but does not change the
-value of {\tt b}, so they are no longer equal. 
+세 번째 줄은 {\tt a}를 변경하지만 {\tt b}는 변경시키지 않는다. 그렇기
+때문에 둘은 더 이상 같지 않다.
 
-Reassigning variables is often useful, but you should use it
-with caution.  If the values of variables change frequently, it can
-make the code difficult to read and debug.
+변수 재할당은 유용하지만 신중하게 사용해야 한다.  변수의 값이 자주
+바뀌면 코드 읽기와 디버깅이 어려워진다.
 
 \begin{figure}
 \centerline
 {\includegraphics[scale=0.8]{figs/assign2.pdf}}
-\caption{State diagram.}
+\caption{스택 상태도}
 \label{fig.assign2}
 \end{figure}
 
 
 
-\section{Updating variables}
+\section{변수 갱신하기}
+%Updating variables
 \label{update}
 
 \index{update}
 \index{variable!updating}
 
-A common kind of reassignment is an {\bf update},
-where the new value of the variable depends on the old.
+흔한 할당 방법은 {\bf 갱신(update)}이다.  이런 종류는 변수의 새로운
+값은 이전 변수의 값에 의존한다.
 
 \begin{verbatim}
 >>> x = x + 1
 \end{verbatim}
 %
-This means ``get the current value of {\tt x}, add one, and then
-update {\tt x} with the new value.''
+이 문장은 ``현재 {\tt x}의 값에 1을 더하고 그 값으로 {\tt x}을 갱신한다. 
 
-If you try to update a variable that doesn't exist, you get an
-error, because Python evaluates the right side before it assigns
-a value to {\tt x}:
+존재하지 않는 변수를 갱신하면 오류가 발생한다.  왜냐하면 Python은
+오른쪽의 표현을 먼저 계산하고 {\tt x}에 값으로 할당하기 때문이다.
+
 
 \begin{verbatim}
 >>> x = x + 1
 NameError: name 'x' is not defined
 \end{verbatim}
 %
-Before you can update a variable, you have to {\bf initialize}
-it, usually with a simple assignment:
+변수의 값을 갱신하기 전에 변수를 먼저 간단한 할당문으로 {\bf
+  초기화(initialize)}해야 한다.
 \index{initialization (before update)}
 
 \begin{verbatim}
@@ -5302,131 +5332,124 @@ it, usually with a simple assignment:
 >>> x = x + 1
 \end{verbatim}
 %
-Updating a variable by adding 1 is called an {\bf increment};
-subtracting 1 is called a {\bf decrement}.
+변수의 값에 1을 더하는 것을 {\bf 증가(increment)}, 1을 빼는 것을 {\bf
+  감소(decrement)}라 부른다.
 \index{increment}
 \index{decrement}
 
 
 
 
-\section{The {\tt while} statement}
+\section{{\tt while}문}
+%The {\tt while} statement
 \index{statement!while}
 \index{while loop}
 \index{loop!while}
 \index{iteration}
 
-Computers are often used to automate repetitive tasks.  Repeating
-identical or similar tasks without making errors is something that
-computers do well and people do poorly.  In a computer program,
-repetition is also called {\bf iteration}.
+컴퓨터는 반복적인 작업을 자동하는데 주로 사용된다.  동일하거나 유사한
+작업을 오류 없이 처리하는 것을 컴퓨터는 잘하지만 사람은 그렇지 못하다.
+컴퓨터 프로그램에서 퇴풀이되는 작업을 {\bf 반복(iteration)}이라 한다.
 
-We have already seen two functions, {\tt countdown} and
-\verb"print_n", that iterate using recursion.  Because iteration is so
-common, Python provides language features to make it easier.
-One is the {\tt for} statement we saw in Section~\ref{repetition}.
-We'll get back to that later.
+우리는 재귀문을 사용하여 반복하는 {\tt countdown}과 \verb"print_n"
+함수를 봤었다.  반복 작업이 너무나 흔하기 때문에 Python은 언어 차원에서
+반복 기능을 제공하고 있다.  그 중 하나는 \ref{repetition}에서 봤던
+{\tt for}문이다.  다시 한 번 살펴볼 것이다.
 
-Another is the {\tt while} statement.  Here is a version of {\tt
-countdown} that uses a {\tt while} statement:
+또 다른 것은 {\tt while}문이다.  {\tt countdown}을 {\tt while}문으로
+바꿔서 다시 작성해보자.
+
 
 \begin{verbatim}
 def countdown(n):
     while n > 0:
         print(n)
         n = n - 1
-    print('Blastoff!')
+    print('발사!')
 \end{verbatim}
 %
-You can almost read the {\tt while} statement as if it were English.
-It means, ``While {\tt n} is greater than 0,
-display the value of {\tt n} and then decrement
-{\tt n}.  When you get to 0, display the word {\tt Blastoff!}''
+{\tt while}문이 마치 영어처럼 거의 자연스럽게 읽혀진다.  해석하면
+``{\tt n}이 0보다 큰 동안에 {\tt n}의 값을 표시하고 그 값을
+감소시킨다.  0이 되면 {\tt 발사!}라고 표시''가 된다.
 \index{flow of execution}
 
-More formally, here is the flow of execution for a {\tt while} statement:
+좀 더 체계적으로 {\tt while}문의 실행 흐름을 살펴보자. 
 
 \begin{enumerate}
 
-\item Determine whether the condition is true or false.
+\item 조건이 참인지 거짓인지 판단한다. 
 
-\item If false, exit the {\tt while} statement
-and continue execution at the next statement.
+\item 거짓이면 {\tt while}문을 끝내고 다음 문장을 실행한다. 
 
-\item If the condition is true, run the
-body and then go back to step 1.
+\item 조건이 참이면 {\tt while}의 내용을 실행하고 첫 단계로 간다. 
 
 \end{enumerate}
 
-This type of flow is called a loop because the third step
-loops back around to the top.  
+이와 같은 흐름을 루프(loop, 반복)라 부른다. 세 번째 단계가 처음으로
+되돌아 반복하기 때문이다.
 \index{condition}
 \index{loop}
 \index{body}
 
-The body of the loop should change the value of one or more variables
-so that the condition becomes false eventually and the loop
-terminates.  Otherwise the loop will repeat forever, which is called
-an {\bf infinite loop}.  An endless source of amusement for computer
-scientists is the observation that the directions on shampoo,
-``Lather, rinse, repeat'', are an infinite loop.
+루프의 내용은 하나 또는 그 이상의 변수를 바꿔야 한다.  그래야 조건이
+언젠가는 거짓이 되서 루프가 끝이나기 때문이다.  그렇지 않으면 루프는
+무한히 되풀이될 것이다.  이런 경우를 {\bf 무한 루프(infinite loop)}이라
+부른다.  샴푸의 사용법을 읽어보면 컴퓨터 과학자들은 놀라지 않을 수가
+없다.  ``비누거품, 린스, 반복''라고 써 있는데, 이는 무한 루프이기
+때문이다.
 \index{infinite loop}
 \index{loop!infinite}
 
-In the case of {\tt countdown}, we can prove that the loop
-terminates: if {\tt n} is zero or negative, the loop never runs.
-Otherwise, {\tt n} gets smaller each time through the
-loop, so eventually we have to get to 0.
+{\tt countdown}의 경우 루프가 끝이 있음을 증명할 수 있다.  만약 {\tt
+  n}이 0이거나 음수이면 루프는 시작도 안된다.  그 외에는 0이 될 때까지
+매번 루프를 돌 때마다 {\tt n}은 감소된다.
 
-For some other loops, it is not so easy to tell.  For example:
+어떤 루프의 경우에는 판단하기가 쉽지않다.  에를 들어보자. 
 
 \begin{verbatim}
 def sequence(n):
     while n != 1:
         print(n)
-        if n % 2 == 0:        # n is even
+        if n % 2 == 0:        # n은 짝수
             n = n / 2
-        else:                 # n is odd
+        else:                 # n은 홀수
             n = n*3 + 1
 \end{verbatim}
 %
-The condition for this loop is {\tt n != 1}, so the loop will continue
-until {\tt n} is {\tt 1}, which makes the condition false.
+이 루프의 조건은 {\tt n != 1}이기 때문에 루프는 {\tt n}이 {\tt 1}이
+되어 거짓이 될 때까지 계속된다.
 
-Each time through the loop, the program outputs the value of {\tt n}
-and then checks whether it is even or odd.  If it is even, {\tt n} is
-divided by 2.  If it is odd, the value of {\tt n} is replaced with
-{\tt n*3 + 1}. For example, if the argument passed to {\tt sequence}
-is 3, the resulting values of {\tt n} are 3, 10, 5, 16, 8, 4, 2, 1.
+프로그램은 루프를 돌 때마다 {\tt n}의 값을 표시하고 짝수 또는 홀수
+검사를 한다.  짝수라면 {\tt n}를 2로 나누고, 홀수라면 {\tt n}은 {\tt
+  n*3 +1}으로 대체된다.  {\tt sequence}에 인자를 3으로 전달했다고
+해보자.  {\tt n}의 결과는 3, 10, 5, 16, 8, 4, 2, 1이 된다.
 
-Since {\tt n} sometimes increases and sometimes decreases, there is no
-obvious proof that {\tt n} will ever reach 1, or that the program
-terminates.  For some particular values of {\tt n}, we can prove
-termination.  For example, if the starting value is a power of two,
-{\tt n} will be even every time through the loop
-until it reaches 1. The previous example ends with such a sequence,
-starting with 16.
+{\tt n}가 증가되기도 하고 감소하기도 하기 때문에 1에 반드시
+도달한다거나 프로그램이 종료한다는 증명은 간단하지 않다.  {\tt n}이
+특정 값인 경우라면 종료한다는 것을 증명할 수 있다.  시작 값이 2의
+배수라면 {\tt n}은 매번 짝수가 되기 때문에 루프를 반복하다보면 1에
+도달하게 된다.  16으로 시작한 경우가 그렇게 끝이 난다.
 \index{Collatz conjecture}
 
-The hard question is whether we can prove that this program terminates
-for {\em all} positive values of {\tt n}.  So far, no one has
-been able to prove it {\em or} disprove it!  (See
-  \url{http://en.wikipedia.org/wiki/Collatz_conjecture}.)
+좀 더 어려운 질문은 이 프로그램이 {\em 모든} 양수에 대해서
+종료하는가이다.  아직까지는 그 어느 누구도 이것을 증명{\em 도}
+반증하지{\em 도} 못했다!  (참고:
+\url{http://en.wikipedia.org/wiki/Collatz_conjecture}.)
 
-As an exercise, rewrite the function \verb"print_n" from
-Section~\ref{recursion} using iteration instead of recursion.
+연습 문제로 \ref{recursion}절의 \verb"print_n" 함수를 반복문을 사용하여
+재작성해보라.
 
 
-\section{{\tt break}}
+\section{{\tt break}문}
 \index{break statement}
 \index{statement!break}
 
-Sometimes you don't know it's time to end a loop until you get half
-way through the body.  In that case you can use the {\tt break}
-statement to jump out of the loop.
+때로는 루프의 반정도를 실행하기 전까지는 루프를 종료할 때가 되었는지
+모를 때가 있다.  그런 경우에 {\tt break}문을 사용하여 루프 밖으로 나올
+수 있다.
 
-For example, suppose you want to take input from the user until they
-type {\tt done}.  You could write:
+사용자가 {\tt done}을 입력하기 전까지 계속 입력을 받는 예를 살펴보자.
+다음과 같이 작성하면 된다.
 
 \begin{verbatim}
 while True:
@@ -5438,13 +5461,14 @@ while True:
 print('Done!')
 \end{verbatim}
 %
-The loop condition is {\tt True}, which is always true, so the
-loop runs until it hits the break statement.
+루프의 조건이 {\tt True}라고 되어 있기 때문에 항상 참이다.  이 루프는
+{\tt break}문을 만나기 전까지 계속 반복된다.
 
-Each time through, it prompts the user with an angle bracket.
-If the user types {\tt done}, the {\tt break} statement exits
-the loop.  Otherwise the program echoes whatever the user types
-and goes back to the top of the loop.  Here's a sample run:
+되풀이 될 때마다 꺽쇠 표시로 사용자에게 입력을 요청한다.  사용자가
+{\tt done}이라 쓰면 {\tt break}문이 루프를 끝낸다.  그 외에는 사용자가
+무엇을 입력하든 그것을 화면에 표시하고 루프의 처음으로 되돌아 간다.
+여기 실행 예시가 있다.
+
 
 \begin{verbatim}
 > not done
@@ -5453,30 +5477,29 @@ not done
 Done!
 \end{verbatim}
 %
-This way of writing {\tt while} loops is common because you
-can check the condition anywhere in the loop (not just at the
-top) and you can express the stop condition affirmatively
-(``stop when this happens'') rather than negatively (``keep going
-until that happens'').
+{\tt while} 루프를 이렇게 사용하는 두 가지 이유가 있다.  첫 째는 조건이
+루프 내 어디서든(루프 맨위에서 한 번이 아니라) 비교가 되기 때문이다.
+두 번째는 종료 조건을 부정적으로(``이것이 발생하기 전까지 계속'')
+표현하는 대신 긍정적으로(``이것이 발생하면 멈춤'') 표현할 수 있기
+때문이다.
 
 
-\section{Square roots}
+\section{제곱 근}
+%Square roots
 \label{squareroot}
 \index{square root}
 
-Loops are often used in programs that compute
-numerical results by starting with an approximate answer and
-iteratively improving it.
+루프는 근사치를 구하고 반복적으로 그 값을 더 정확하게 만드는 수치해석
+프로그램에서 주로 쓰인다.
 \index{Newton's method}
 
-For example, one way of computing square roots is Newton's method.
-Suppose that you want to know the square root of $a$.  If you start
-with almost any estimate, $x$, you can compute a better
-estimate with the following formula:
+예를 들어 보자.  제곱 근을 구하는 방법 중 하나는 뉴튼의 기법(Newton's
+method)이다.  $a$의 제곱 근을 알고 싶다고 해보자.  어떤 추정치 $x$에서
+시작하든 다음의 식으로 좀 더 정확한 근사치를 얻을 수 있다.
 
 \[ y = \frac{x + a/x}{2} \]
 %
-For example, if $a$ is 4 and $x$ is 3:
+$a$는 4 $x$는 3이라고 해보자.
 
 \begin{verbatim}
 >>> a = 4
@@ -5486,8 +5509,8 @@ For example, if $a$ is 4 and $x$ is 3:
 2.16666666667
 \end{verbatim}
 %
-The result is closer to the correct answer ($\sqrt{4} = 2$).  If we
-repeat the process with the new estimate, it gets even closer:
+정답에 좀 더 가까운 결과를 얻었다($\sqrt{4} = 2$).  이 과정을 새로운
+추정치로 반복한다면 좀 더 정답에 가까워진다.
 
 \begin{verbatim}
 >>> x = y
@@ -5496,7 +5519,7 @@ repeat the process with the new estimate, it gets even closer:
 2.00641025641
 \end{verbatim}
 %
-After a few more updates, the estimate is almost exact:
+몇 번 더 갱신하면 추정치는 거의 정답에 가까워진다. 
 \index{update}
 
 \begin{verbatim}
@@ -5510,10 +5533,10 @@ After a few more updates, the estimate is almost exact:
 2.00000000003
 \end{verbatim}
 %
-In general we don't know ahead of time how many steps it takes
-to get to the right answer, but we know when we get there
-because the estimate
-stops changing:
+일반적으로 이 과정을 몇 번이나 거쳐야 정답을 얻게 되는지 모른다.
+그렇지만, 정답에 가까워지면 알게된다.  왜냐하면 추정치의 변화하지 않기
+때문이다.
+
 
 \begin{verbatim}
 >>> x = y
@@ -5526,9 +5549,8 @@ stops changing:
 2.0
 \end{verbatim}
 %
-When {\tt y == x}, we can stop.  Here is a loop that starts
-with an initial estimate, {\tt x}, and improves it until it
-stops changing:
+{\tt y == x}이면 멈추면 된다.  다음은 초기 추정치 {\tt x}로부터 변화가
+없을 때까지 정확도를 높이는 루프이다.
 
 \begin{verbatim}
 while True:
@@ -5539,100 +5561,95 @@ while True:
     x = y
 \end{verbatim}
 %
-For most values of {\tt a} this works fine, but in general it is
-dangerous to test {\tt float} equality.
-Floating-point values are only approximately right:
-most rational numbers, like $1/3$, and irrational numbers, like
-$\sqrt{2}$, can't be represented exactly with a {\tt float}.
+대부분의 {\tt a}는 동작을 하지만, {\tt float}형을 등호에 쓸 때는
+조심해야 한다.  부동소수점 값은 근사치이기 때문이다.  $1/3$처럼
+유리수인 경우나 $\sqrt{2}$처럼 무리수인 경우의 대부분은 {\tt
+  float}형으로 그 값을 정확하게 표현될 수 없다는 것을 기억해야 한다.
 \index{floating-point}
 \index{epsilon}
 
-Rather than checking whether {\tt x} and {\tt y} are exactly equal, it
-is safer to use the built-in function {\tt abs} to compute the
-absolute value, or magnitude, of the difference between them:
+{\tt float}형인 {\tt x}와 {\tt y}가 서로 정확히 일치하는지 등호로
+검사하는 대신 내장 함수인 {\tt abs}를 사용하여 그 수의 절대치 또는
+크기를 비교하는 것이 좋다.
 
 \begin{verbatim}
     if abs(y-x) < epsilon:
         break
 \end{verbatim}
 %
-Where \verb"epsilon" has a value like {\tt 0.0000001} that
-determines how close is close enough.
+\verb"epsilon"는 {\tt 0.0000001}와 같은 값으로 얼마나 작아야 같다고 할
+수 있는지 판단하는데 도움이 된다.
 
 
-\section{Algorithms}
+\section{알고리즘}
+%Algorithms
 \index{algorithm}
 
-Newton's method is an example of an {\bf algorithm}: it is a
-mechanical process for solving a category of problems (in this
-case, computing square roots).
+뉴튼의 기법은 {\bf 알고리즘(algorithm)}의 예이다.  어떤 종류의 문제(이
+경우에는 제곱 근의 계산)를 해결하기 위한 기계적인 과정이다.
 
-To understand what an algorithm is, it might help to start with
-something that is not an algorithm.  When you learned to multiply
-single-digit numbers, you probably memorized the multiplication table.
-In effect, you memorized 100 specific solutions.  That kind of
-knowledge is not algorithmic.
+알고리즘이 무엇인지 이해하기 위해서는 알고리즘이 아닌 무엇인가로부터
+시작하는 것이 좋겠다.  한 자리 수 숫자로 곱셉하는 법을 배웠을 때
+구구단을 외웠을 것이다.  사실상은 100개의 서로 다른 해답을 외웠을
+뿐이다.  이런 종류의 지식은 알고리즘적 접근이 전혀 아니다.
 
-But if you were ``lazy'', you might have learned a few
-tricks.  For example, to find the product of $n$ and 9, you can
-write $n-1$ as the first digit and $10-n$ as the second
-digit.  This trick is a general solution for multiplying any
-single-digit number by 9.  That's an algorithm!
+당신이 만약 ``게으르다면'' 요령을 배울 필요가 있다.  예를 들어 어떤 수
+$n$과 9의 곱을 구한다고 해보자.  일의 자리에 $n-1$을 쓰고 십의 자리에
+$10-n$을 쓰면 된다.  이 요령은 한 자리 수 숫자와 9의 곱에 대한 일반
+해이다.  이런 것이 바로 알고리즘이다!
 \index{addition with carrying}
 \index{carrying, addition with}
 \index{subtraction!with borrowing}
 \index{borrowing, subtraction with}
 
-Similarly, the techniques you learned for addition with carrying,
-subtraction with borrowing, and long division are all algorithms.  One
-of the characteristics of algorithms is that they do not require any
-intelligence to carry out.  They are mechanical processes where
-each step follows from the last according to a simple set of rules.
+올림이 있는 덧셈이나 빌려서 뺄셈하기와 나눗셈하는 기술들이 모두
+알고리즘이다.  알고리즘이 갖는 특성 중 하나는 지적 능력이 전혀 필요
+없다는 것이다.  기계적으로 간단한 규칙에 따라 이전 단계에서 다음 단계를
+따르면 되기 때문이다.
 
-Executing algorithms is boring, but designing them is interesting,
-intellectually challenging, and a central part of computer science.
+알고리즘의 실행은 지겨운 일이지만 설계하는 것은 흥미진진하고 지적으로
+도전적이다.  뿐만아니라 컴퓨터 과학의 중심이기도 하다.
 
-Some of the things that people do naturally, without difficulty or
-conscious thought, are the hardest to express algorithmically.
-Understanding natural language is a good example.  We all do it, but
-so far no one has been able to explain {\em how} we do it, at least
-not in the form of an algorithm.
+사람들이 자연스럽게 어려움 없이 또는 깊이 생각하지 않고 하는 것들
+중에는 알고리즘으로 표현하기 매우 어려운 것들이 있다.  자연어 인식이
+좋은 예이다.  우리는 하지만 아직까지 {\em 어떻게} 그렇게 할 수 있는지
+누구도 설명하지 못했다.  최소한 알고리즘으로 풀어내지는 못했다.
 
 
-\section{Debugging}
+
+\section{디버깅}
+%Debugging
 \label{bisectbug}
 
-As you start writing bigger programs, you might find yourself
-spending more time debugging.  More code means more chances to
-make an error and more places for bugs to hide.
+프로그램의 크기가 커지다보면 더 많은 시간을 디버깅에 쓰게 되는 것을
+보게 된다.  더 많은 코드는 오류를 만들 확률이 많아지고 버그가 숨을 곳이
+더 많아진다는 말이다.
 \index{debugging!by bisection}
 \index{bisection, debugging by}
 
-One way to cut your debugging time is ``debugging by bisection''.
-For example, if there are 100 lines in your program and you
-check them one at a time, it would take 100 steps.
+디버깅 시간을 줄이는 방법 중 하나는 ``등분으로 디버깅하기''이다.  예를
+들어 100 줄짜리 프로그램이 있다고 했을 때 한 줄씩 검사한다면 100번
+검사해야 한다.
 
-Instead, try to break the problem in half.  Look at the middle
-of the program, or near it, for an intermediate value you
-can check.  Add a {\tt print} statement (or something else
-that has a verifiable effect) and run the program.
+대신에, 문제를 반으로 쪼개보자.  프로그램의 중간 또는 그 근처에 있는
+중간 과정의 값 중 검사할 수 있는 것을 확인해보자.  {\tt print}문(증명을
+도와줄 어떤 것)을 추가한 후 프로그램을 실행하자.
 
-If the mid-point check is incorrect, there must be a problem in the
-first half of the program.  If it is correct, the problem is
-in the second half.
 
-Every time you perform a check like this, you halve the number of
-lines you have to search.  After six steps (which is fewer than 100),
-you would be down to one or two lines of code, at least in theory.
+중간 점검이 부정확하다면 전반부에 오류가 있다는 말이다.  정확하다면
+문제는 후반부에 있다. 
 
-In practice it is not always clear what
-the ``middle of the program'' is and not always possible to
-check it.  It doesn't make sense to count lines and find the
-exact midpoint.  Instead, think about places
-in the program where there might be errors and places where it
-is easy to put a check.  Then choose a spot where you
-think the chances are about the same that the bug is before
-or after the check.
+이런 식으로 검사를 할 때마다 검사해야할 줄의 수를 반씩 줄여나가면
+된다.  이론상으로는 이 과정을 6번(100번 보다 작다) 반복하면 검사해야 할
+줄의 수가 하나 또는 두 줄 정도가 된다.
+
+실제로는 ``프로그램의 중간''이 늘 명확하지도 않고 그 부분을 검사한다는
+것이 가능하지도 않다.  정확한 중간 지점을 찾기 위해 라인 수를 세서
+반으로 나눈다는 것도 말이 안된다.  대신에 오류가 있을만한 부분을
+생각해보고 검사 문장을 쉽게 삽입할 수 있는 위치를 생각해보자.  그리고
+검사 문장 삽입 위치 전과 그 후에 오류가 있을 확률이 서로 비슷한 지점에
+검사 문장을 삽입하자.
+
 
 
 
@@ -5642,35 +5659,29 @@ or after the check.
 
 \begin{description}
 
-\item[reassignment:] Assigning a new value to a variable that
-already exists.
+\item[재할당(reassignment):]  이미 존재하는 변수에 새로운 값을 할당하는 것.
 \index{reassignment}
 
-\item[update:] An assignment where the new value of the variable
-depends on the old.
+\item[갱신(update):] 변수의 새로운 값이 이전 값에 의존하는 할당문.
 \index{update}
 
-\item[initialization:] An assignment that gives an initial value to
-a variable that will be updated.
+\item[초기화(initialization):] 갱신될 변수에 초기 값을 할당하는 것.
 \index{initialization!variable}
 
-\item[increment:] An update that increases the value of a variable
-(often by one).
+\item[증가(increment):] 변수의 값을 증가 시키는 갱신(주로 1 증가).
 \index{increment}
 
-\item[decrement:] An update that decreases the value of a variable.
+\item[감소(decrement):] 변수의 값을 감소 시키는 갱신.
 \index{decrement}
 
-\item[iteration:] Repeated execution of a set of statements using
-either a recursive function call or a loop.
+\item[반복(iteration):] 재귀 함수 호출이나 루프를 사용하여 문장들을
+  되풀이하여 실행하는 것
 \index{iteration}
 
-\item[infinite loop:] A loop in which the terminating condition is
-never satisfied.
+\item[무한 루프(infinite loop):] 종료 조건이 절대로 충족되지 않는 루프.
 \index{infinite loop}
 
-\item[algorithm:]  A general process for solving a category of
-problems.
+\item[알고리즘(algorithm):]  어떤 종류의 문제를 해결하는 일반적인 과정.
 \index{algorithm}
 
 \end{description}
@@ -5682,14 +5693,13 @@ problems.
 \begin{exercise}
 \index{algorithm!square root}
 
-Copy the loop from Section~\ref{squareroot}
-and encapsulate it in a function called
-\verb"mysqrt" that takes {\tt a} as a parameter, chooses a
-reasonable value of {\tt x}, and returns an estimate of the square
-root of {\tt a}.  \index{encapsulation}
+\ref{squareroot} 절의 루프문을 복사하여 \verb"mysqrt"라는 함수로
+캡슐화하라.  이 때 {\tt a}를 매개 변수로하고 타당한 {\tt x}을
+선정하자.  그리고 {\tt a}의 제곱 근의 추정치를 리턴하도록 하라.
+\index{encapsulation}
 
-To test it, write a function named \verb"test_square_root"
-that prints a table like this:
+검사를 위해 \verb"test_square_root"라는 함수를 만들고 다음과 같이
+출력하도록 만들자.
 
 \begin{verbatim}
 a   mysqrt(a)     math.sqrt(a)  diff
@@ -5705,10 +5715,9 @@ a   mysqrt(a)     math.sqrt(a)  diff
 9.0 3.0           3.0           0.0
 \end{verbatim}
 %
-The first column is a number, $a$; the second column is the square
-root of $a$ computed with \verb"mysqrt"; the third column is the
-square root computed by {\tt math.sqrt}; the fourth column is the
-absolute value of the difference between the two estimates.
+첫 번재 열은 숫자 $a$이다.  두 번째 열은 \verb"mysqrt"으로 계산된 $a$의
+제곱근이다.  세 번째 열은 {\tt math.sqrt}으로 계산된 제곱 근이다.  네
+번째 열은 두 추정치의 차이의 절대치를 나타낸다.
 \end{exercise}
 
 
@@ -5716,8 +5725,8 @@ absolute value of the difference between the two estimates.
 \index{eval function}
 \index{function!eval}
 
-The built-in function {\tt eval} takes a string and evaluates
-it using the Python interpreter.  For example:
+내장 함수인 {\tt eval}은 문자열을 받아 Python 인터프리터를 사용하여
+계산한다.  다음 예를 살펴보자.
 
 \begin{verbatim}
 >>> eval('1 + 2 * 3')
@@ -5729,12 +5738,12 @@ it using the Python interpreter.  For example:
 <class 'float'>
 \end{verbatim}
 %
-Write a function called \verb"eval_loop" that iteratively
-prompts the user, takes the resulting input and evaluates
-it using {\tt eval}, and prints the result.
+반복저으로 사용자의 입력을 기다리는 \verb"eval_loop" 함수를
+작성해보자.  전달받은 값을 {\tt eval} 함수로 계산하고 그 결과를
+출력하도록 만들자.
 
-It should continue until the user enters \verb"'done'", and then
-return the value of the last expression it evaluated.
+사용자가 \verb"'done'"을 입력하기 전까지 계속 동작하고 종료하면서
+마지막 계산한 수식의 결과를 표시하도록 만들자.
 
 \end{exercise}
 
@@ -5742,22 +5751,19 @@ return the value of the last expression it evaluated.
 \begin{exercise}
 \index{Ramanujan, Srinivasa}
 
-The mathematician Srinivasa Ramanujan found an
-infinite series
-that can be used to generate a numerical
-approximation of $1 / \pi$:
+스리니바사 라마누잔(Srinivasa Ramanujan)은 무한 급수를 발견하였다.
+무한 급수는 $1 / \pi$의 근사치를 구하는데 쓰인다.
 \index{pi}
 
 \[ \frac{1}{\pi} = \frac{2\sqrt{2}}{9801} 
 \sum^\infty_{k=0} \frac{(4k)!(1103+26390k)}{(k!)^4 396^{4k}} \]
 
-Write a function called \verb"estimate_pi" that uses this formula
-to compute and return an estimate of $\pi$.  It should use a {\tt while}
-loop to compute terms of the summation until the last term is
-smaller than {\tt 1e-15} (which is Python notation for $10^{-15}$).
-You can check the result by comparing it to {\tt math.pi}.
+위의 공식을 사용하여 $\pi$의 추청지를 계산하여 리턴하는
+\verb"estimate_pi" 함수를 작성해보자.  {\tt while} 루프를 사용하여
+추정치의 마지막 항이 {\tt 1e-15}(Python에서 $10^{-15}$의 표기)보다 작을
+때까지 반복하라.  얻은 결과는 {\tt math.pi}와 비교해 볼 수 있다.
 
-Solution: \url{http://thinkpython2.com/code/pi.py}.
+해답: \url{http://thinkpython2.com/code/pi.py}.
 
 \end{exercise}
 
@@ -6305,7 +6311,8 @@ comparison.  Keep that in mind in case you have to defend yourself
 against a man armed with a Pineapple.
 
 
-\section{Debugging}
+\section{디버깅}
+%Debugging
 \index{debugging}
 \index{traversal}
 
@@ -6990,7 +6997,8 @@ def is_palindrome(word):
 Using \verb"is_reverse" from Section~\ref{isreverse}.
 
 
-\section{Debugging}
+\section{디버깅}
+%Debugging
 \index{debugging}
 \index{testing!is hard}
 \index{program testing}
@@ -8023,7 +8031,8 @@ Here's how it is used:
 
 
 
-\section{Debugging}
+\section{디버깅}
+%Debugging
 \index{debugging}
 
 Careless use of lists (and other mutable objects)
@@ -9060,7 +9069,8 @@ and you modify them frequently, they can make programs
 hard to debug.
 
 
-\section{Debugging}
+\section{디버깅}
+%Debugging
 \index{debugging}
 
 As you work with bigger datasets it can become unwieldy to
@@ -9959,7 +9969,8 @@ traverses the list in reverse order.
 \index{iterator}
 
 
-\section{Debugging}
+\section{디버깅}
+%Debugging
 \index{debugging}
 \index{data structure}
 \index{shape error}
@@ -10914,7 +10925,8 @@ generation.  This would be a net win if the time saved during
 generation exceeded the time spent in conversion.
 
 
-\section{Debugging}
+\section{디버깅}
+%Debugging
 \index{debugging}
 
 When you are debugging a program, and especially if you are
@@ -11742,7 +11754,8 @@ If you want to reload a module, you can use the built-in function
 restart the interpreter and then import the module again.
 
 
-\section{Debugging}
+\section{디버깅}
+%Debugging
 \index{debugging}
 \index{whitespace}
 
@@ -12392,7 +12405,8 @@ As an exercise, write a version of \verb"move_rectangle" that creates and
 returns a new Rectangle instead of modifying the old one.
 
 
-\section{Debugging}
+\section{디버깅}
+%Debugging
 \label{hasattr}
 \index{debugging}
 
@@ -12867,7 +12881,8 @@ easier (because there are fewer special cases and fewer opportunities
 for error).
 
 
-\section{Debugging}
+\section{디버깅}
+%Debugging
 \index{debugging}
 
 A Time object is well-formed if the values of {\tt minute} and {\tt
@@ -13618,7 +13633,8 @@ you discover that a function you already wrote can be
 applied to a type you never planned for.
 
 
-\section{Debugging}
+\section{디버깅}
+%Debugging
 \index{debugging}
 
 It is legal to add attributes to objects at any point in the execution
@@ -14404,7 +14420,8 @@ contains a {\em list} of Cards, but built-in types
 like list and dict are usually not included in class diagrams.
 
 
-\section{Debugging}
+\section{디버깅}
+%Debugging
 \index{debugging}
 
 Inheritance can make debugging difficult because when you invoke a
