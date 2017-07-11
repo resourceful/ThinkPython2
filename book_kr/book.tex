@@ -1465,7 +1465,7 @@ break      except     in         raise
 \url{http://tinyurl.com/thinkpython2e}에 기록해 놓았다.
 
 Python이 두 가지 모드를 지원하기 때문에 스크립트로 저장하기 전에 대화식
-모드로 실험해볼 수 있다.  하지만 대화식 모드와 스크립트 모드간의 차이가
+모드로 실험해볼 수 있다.  하지만 대화식 모드와 스크립트 모드간의 차이≈가
 있기 때문에 그렇게 사용하면 혼란스러울 수 있다.
 \index{interactive mode}
 \index{script mode}
@@ -3526,14 +3526,14 @@ Python 2를 사용 중이라면 나눗셈은 다르게 동작한다.  나눗셈 
 \index{Python 2}
 
 
-\section{불 표현식}
+\section{Boolean 표현식}
 %Boolean expressions
 \index{boolean expression}
 \index{expression!boolean}
 \index{logical operator}
 \index{operator!logical}
 
-{\bf 불 표현식(boolean expression)}은 참또는 거짓을 나타내는
+{\bf Boolean 표현식(boolean expression)}은 참또는 거짓을 나타내는
 표현식이다.  다음의 예들은 두 피연산자를 비교하는 {\tt ==} 연산자를
 사용한다.  두 값이 동일하면 {\tt True(참)}을 다르면 {\tt
   False(거짓)}이다.
@@ -3599,11 +3599,11 @@ False
 {\tt n\%2 == 0 or n\%3 == 0} 은 {\em 둘 중 하나만} 또는 {\em둘 다} 참일
 때 참이 된다.  즉, 2 {\em 또는} 3으로 나누어 지거는 경우이다.
 
-마지막으로 {\tt not} 연산자는 불 표현식의 반대 값을 취한다.  {\tt not
+마지막으로 {\tt not} 연산자는 boolean 표현식의 반대 값을 취한다.  {\tt not
   (x > y)}는 {\tt x > y}가 거짓일 때 참이 된다.  즉, {\tt x}가 {\tt
   y}보다 작거나 같은 경우이다.
 
-정확하게 말하면, 논리 연산자의 피연산자는 불 표현식이어야하지만,
+정확하게 말하면, 논리 연산자의 피연산자는 boolean 표현식이어야하지만,
 Python이 그렇게 엄격하지는 않다.  0이 아닌 어떤 수이기만 하면 {\tt
   True}으로 인식한다.
 
@@ -3637,7 +3637,7 @@ if x > 0:
     print('x is positive')
 \end{verbatim}
 %
-{\tt if}문 이후의 불 표현식은 {\bf 조건(condition)}이라 부른다.
+{\tt if}문 이후의 boolean 표현식은 {\bf 조건(condition)}이라 부른다.
 참이라면, 의도한 문장이 실행되고 그렇지 않다면 아무 일도 일어 나지
 않는다.
 \index{condition}
@@ -4126,8 +4126,8 @@ ValueError: math domain error
 \index{modulus operator}
 \index{operator!modulus}
 
-\item[불 표현식(boolean expression):] 결과가 항상 참({\tt True})이거나
-  거짓({\tt False})인 표현식
+\item[Boolean 표현식(boolean expression):] 결과가 항상 참({\tt
+    True})이거나 거짓({\tt False})인 표현식 
 \index{boolean expression}
 \index{expression!boolean}
 
@@ -4135,7 +4135,7 @@ ValueError: math domain error
   다음의 종류가 있음: {\tt ==}, {\tt !=}, {\tt >}, {\tt <}, {\tt >=},
   {\tt <=}.
 
-\item[논리 연산자(logical operator):] 불 표현식들을 서로 연결하는
+\item[논리 연산자(logical operator):] Boolean 표현식들을 서로 연결하는
   연산자: {\tt and}, {\tt or}, {\tt not}이 있음
 
 \item[조건문(conditional statement):] 어떤 조건에 따라 실행의 흐름을
@@ -4143,7 +4143,7 @@ ValueError: math domain error
 \index{conditional statement}
 \index{statement!conditional}
 
-\item[조건(condition):]  조건문에서 어떤 분기가 실행될지를 결정하는 불 표현식
+\item[조건(condition):]  조건문에서 어떤 분기가 실행될지를 결정하는 boolean 표현식
 \index{condition}
 
 \item[복합문(compound statement):] 헤더와 내용으로 구성된 문장으로
@@ -4649,11 +4649,11 @@ def circle_area(xc, yc, xp, yp):
 \end{verbatim}
 %
 
-\section{불 함수}
+\section{Boolean 함수}
 %Boolean functions
 \label{boolean}
 
-함수는 불 값을 리턴할 수 있다.  그렇게 하면 복잡한 검사문을 함수에 감출
+함수는 bool 값을 리턴할 수 있다.  그렇게 하면 복잡한 검사문을 함수에 감출
 수 있기 때문에 유용하다.
 \index{boolean function}
 예를 살펴 보자.
@@ -4666,7 +4666,7 @@ def is_divisible(x, y):
         return False
 \end{verbatim}
 %
-불 함수의 이름은 참/거짓을 묻는 질문처럼 만드는 것이 일반적이다.
+Boolean 함수의 이름은 참/거짓을 묻는 질문처럼 만드는 것이 일반적이다.
 \verb"is_divisible"은 {\tt x}가 {\tt y}로 나누어 떨어지는지 {\tt True}
 또는 {\tt False}로 리턴한다.
 
@@ -4688,7 +4688,7 @@ def is_divisible(x, y):
     return x % y == 0
 \end{verbatim}
 %
-불 함수는 조건문에 많이 쓰인다. 
+Boolean 함수는 조건문에 많이 쓰인다. 
 \index{conditional statement}
 \index{statement!conditional}
 
@@ -5768,50 +5768,49 @@ a   mysqrt(a)     math.sqrt(a)  diff
 \end{exercise}
 
 
-\chapter{Strings}
+\chapter{문자열}
+%Strings
 \label{strings}
 
-Strings are not like integers, floats, and booleans.  A string
-is a {\bf sequence}, which means it is
-an ordered collection of other values.  In this chapter you'll see
-how to access the characters that make up a string, and you'll
-learn about some of the methods strings provide.
+문자열은 정수나 부동소수점 그리고 boolean 과같지 않다.  문자열은 {\bf
+  수열(sequence)}로서 여러 값들의 순차 컬렉션이다.  이 장에서는
+문자열을 이루는 글자들을 접근하는 방법과 몇 개의 문자열 관련 메소드를
+배울 것이다.
 \index{sequence}
+%ordered collection 순차 컬렉션
 
-
-\section{A string is a sequence}
+\section{문자열은 수열이다}
+%A string is a sequence
 
 \index{sequence}
 \index{character}
 \index{bracket operator}
 \index{operator!bracket}
-A string is a sequence of characters.  
-You can access the characters one at a time with the
-bracket operator:
+
+문자열은 글자들의 수열이다.  각 글자를 각괄호를 사용해 접근할 수 있다. 
 
 \begin{verbatim}
 >>> fruit = 'banana'
 >>> letter = fruit[1]
 \end{verbatim}
 %
-The second statement selects character number 1 from {\tt
-fruit} and assigns it to {\tt letter}.  
+두 번째 문장은 {\tt fruit}의 첫 글자를 {\tt letter}에 할당한다. 
 \index{index}
 
-The expression in brackets is called an {\bf index}.  
-The index indicates which character in the sequence you
-want (hence the name).
+각괄호에 쓰인 표현식을 {\bf 색인(index)}이라 한다.  색인(이름에서 알 수
+있듯이)은 수열에서 원하는 글자를 가리킨다.
 
-But you might not get what you expect:
+그렇지만 기대한 글자가 아닐 수 있다. 
 
 \begin{verbatim}
 >>> letter
 'a'
 \end{verbatim}
 %
-For most people, the first letter of \verb"'banana'" is {\tt b}, not
-{\tt a}.  But for computer scientists, the index is an offset from the
-beginning of the string, and the offset of the first letter is zero.
+대부분의 사람에게 \verb"'banana'"의 첫 글자는 {\tt a}가 아니라 {\tt
+  b}이다.  그렇지만 컴퓨터 과학자에게는 색인 첫 글자로부터 떨어진
+위치를 뜻하기 때문에 첫 글자의 첫 글자로부터 떨어진 위치는 0이다.
+
 
 \begin{verbatim}
 >>> letter = fruit[0]
@@ -5819,13 +5818,11 @@ beginning of the string, and the offset of the first letter is zero.
 'b'
 \end{verbatim}
 %
-So {\tt b} is the 0th letter (``zero-eth'') of \verb"'banana'", {\tt
-  a} is the 1th letter (``one-eth''), and {\tt n} is the 2th letter
-(``two-eth'').  \index{index!starting at zero} \index{zero, index
-  starting at}
+{\tt b}가 \verb"'banana'"의 0번째 글자이고 {\tt a}와 {\tt n}가 각각
+1번째와 2번째 글자이다.
+\index{index!starting at zero} \index{zero, index starting at}
 
-As an index you can use an expression that contains variables and
-operators:
+변수와 연산자로 구성된 표현식을 색인으로 사용할 수 있다. 
 \index{index}
 
 \begin{verbatim}
@@ -5837,8 +5834,8 @@ operators:
 \end{verbatim}
 %
 
-But the value of the index has to be an integer.  Otherwise you
-get:
+기억해야 할 것은 색인은 항상 정수여야 한다는 것이다.  그렇지 않으면
+다음과 같은 오류가 발생한다.
 \index{exception!TypeError}
 \index{TypeError}
 
@@ -5852,8 +5849,7 @@ TypeError: string indices must be integers
 \index{len function}
 \index{function!len}
 
-{\tt len} is a built-in function that returns the number of characters
-in a string:
+문자열의 글자 수를 리턴하는 {\tt len}는 내장 함수이다.
 
 \begin{verbatim}
 >>> fruit = 'banana'
@@ -5861,8 +5857,7 @@ in a string:
 6
 \end{verbatim}
 %
-To get the last letter of a string, you might be tempted to try something
-like this:
+문자열의 마지막 글자를 얻으려고 할 때 다음과 같이 하면 될 것 같다는 생각이 든다.  그렇지만 안된다. 
 \index{exception!IndexError}
 \index{IndexError}
 
@@ -5872,10 +5867,10 @@ like this:
 IndexError: string index out of range
 \end{verbatim}
 %
-The reason for the {\tt IndexError} is that there is no letter in {\tt
-'banana'} with the index 6.  Since we started counting at zero, the
-six letters are numbered 0 to 5.  To get the last character, you have
-to subtract 1 from {\tt length}:
+{\tt IndexError}가 발생하는 이유는 {\tt 'banana'}에서 색인 6 위치에는
+글자가 없기 때문이다.  0에서 숫자를 세기 시작하기 때문에 6 글자의
+색인은 0에서 시작해서 5에서 끝난다.  그러므로 마지막 글자를 얻으려면
+{\tt length}에서 1 뺀 값을 사용해야 한다.
 
 \begin{verbatim}
 >>> last = fruit[length-1]
@@ -5883,14 +5878,15 @@ to subtract 1 from {\tt length}:
 'a'
 \end{verbatim}
 %
-Or you can use negative indices, which count backward from
-the end of the string.  The expression {\tt fruit[-1]} yields the last
-letter, {\tt fruit[-2]} yields the second to last, and so on.
+또는 색인을 음수로 쓰면 된다.  문자열을 역방향으로 셀 수 있다.  {\tt
+  fruit[-1]}이라는 표현식은 마지막 글자를 {\tt fruit[-2]}은 끝에서
+2번째 글자를 나타내는 식이다.
 \index{index!negative}
 \index{negative index}
 
 
-\section{Traversal with a {\tt for} loop}
+\section{{\tt for} 루프로 순회하기}
+%Traversal with a {\tt for} loop
 \label{for}
 \index{traversal}
 \index{loop!traversal}
@@ -5899,11 +5895,7 @@ letter, {\tt fruit[-2]} yields the second to last, and so on.
 \index{statement!for}
 \index{traversal}
 
-A lot of computations involve processing a string one character at a
-time.  Often they start at the beginning, select each character in
-turn, do something to it, and continue until the end.  This pattern of
-processing is called a {\bf traversal}.  One way to write a traversal
-is with a {\tt while} loop:
+문자열의 각 글자 단위로 처리하는 연산들이 많다.  보통은 첫 글자에서 시작해서, 마지막 글자에 도달하기 까지 각 글자로 무언가를 한다.  이런 류의 작업을 {\bf 순회(traversal)}이라 부른다.  순회문을 작성하는 한 가지 방법은 {\tt while} 루프를 쓰는 것이다.
 
 \begin{verbatim}
 index = 0
@@ -5913,6 +5905,7 @@ while index < len(fruit):
     index = index + 1
 \end{verbatim}
 %
+
 This loop traverses the string and displays each letter on a line by
 itself.  The loop condition is {\tt index < len(fruit)}, so
 when {\tt index} is equal to the length of the string, the
