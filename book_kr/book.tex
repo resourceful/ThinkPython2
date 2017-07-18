@@ -5895,7 +5895,10 @@ IndexError: string index out of range
 \index{statement!for}
 \index{traversal}
 
-문자열의 각 글자 단위로 처리하는 연산들이 많다.  보통은 첫 글자에서 시작해서, 마지막 글자에 도달하기 까지 각 글자로 무언가를 한다.  이런 류의 작업을 {\bf 순회(traversal)}이라 부른다.  순회문을 작성하는 한 가지 방법은 {\tt while} 루프를 쓰는 것이다.
+문자열의 각 글자 단위로 처리하는 연산들이 많다.  보통은 첫 글자에서
+시작해서, 마지막 글자에 도달하기 까지 각 글자로 무언가를 한다.  이런
+류의 작업을 {\bf 순회(traversal)}이라 부른다.  순회문을 작성하는 한
+가지 방법은 {\tt while} 루프를 쓰는 것이다.
 
 \begin{verbatim}
 index = 0
@@ -5906,36 +5909,35 @@ while index < len(fruit):
 \end{verbatim}
 %
 
-This loop traverses the string and displays each letter on a line by
-itself.  The loop condition is {\tt index < len(fruit)}, so
-when {\tt index} is equal to the length of the string, the
-condition is false, and the body of the loop doesn't run.  The
-last character accessed is the one with the index {\tt len(fruit)-1},
-which is the last character in the string.
+이 루프는 문자열을 순회하면서 한 글자씩 출력한다.  루프의 조건은 {\tt
+  index < len(fruit)}이기 때문에 {\tt index}가 문자열의 길이와 같게 될
+때까지 동작한다.  조건이 맞지 않으면 루프가 실행되지 않는다.
+마지막으로 접근되는 글자는 문자열의 마지막 글자인 {\tt len(fruit)-1}번
+색인이다.
 
-As an exercise, write a function that takes a string as an argument
-and displays the letters backward, one per line.
+연습삼아 문자열을 인자로 입력받아 각 줄에 한 글자씩 역순으로 출력하는
+함수를 만들어 보자.
 
-Another way to write a traversal is with a {\tt for} loop:
+순회문을 작성하는 또 다른 방법은 {\tt for} 루프를 사용하는 것이다. 
 
 \begin{verbatim}
 for letter in fruit:
     print(letter)
 \end{verbatim}
 %
-Each time through the loop, the next character in the string is assigned
-to the variable {\tt letter}.  The loop continues until no characters are
-left.
+루프를 순회할 때마다 다음 글자가 {\tt letter} 변수에 할당된다.  루프는
+더 이상 글자가 없을 때까지 계속 실행된다.
+
 \index{concatenation}
 \index{abecedarian}
 \index{McCloskey, Robert}
 
-The following example shows how to use concatenation (string addition)
-and a {\tt for} loop to generate an abecedarian series (that is, in
-alphabetical order).  In Robert McCloskey's book {\em Make
-Way for Ducklings}, the names of the ducklings are Jack, Kack, Lack,
-Mack, Nack, Ouack, Pack, and Quack.  This loop outputs these names in
-order:
+다음 예제는 연결(문자열 더하기)하는 방법과 {\tt for} 루프를 사용하여
+알파벳 순으로 된 시리즈(series)를 만드는 방법을 소개한다.  로버트
+맥클로스키(Robert McCloskey)의 책 {\em Make Way for Ducklings}에 나오는
+오리들의 이름은 Jack, Kack, Lack, Mack, Nack, Ouack, Pack, 그리고
+Quack이다.  이 루프는 이 이름들을 알파벳 순서대로 출력한다.
+
 
 \begin{verbatim}
 prefixes = 'JKLMNOPQ'
@@ -5945,7 +5947,7 @@ for letter in prefixes:
     print(letter + suffix)
 \end{verbatim}
 %
-The output is:
+결과는 다음과 같다. 
 
 \begin{verbatim}
 Jack
@@ -5958,18 +5960,21 @@ Pack
 Qack
 \end{verbatim}
 %
-Of course, that's not quite right because ``Ouack'' and ``Quack'' are
-misspelled.  As an exercise, modify the program to fix this error.
+이 결과가 완전히 정확한 것은 아니다. ``Ouack''과 ``Quack'' 스펠링이
+잘못되었기 때문이다.  연습 문제로 이 오류를 고쳐보라.
 
 
 
-\section{String slices}
+
+\section{문자열 조각}
+%String slices
 \label{slice}
 \index{slice operator} \index{operator!slice} \index{index!slice}
 \index{string!slice} \index{slice!string}
 
-A segment of a string is called a {\bf slice}.  Selecting a slice is
-similar to selecting a character:
+문자열 중 일 부분을 {\bf 조각(slice)}이라 부른다.  조각을 선택하는
+방법은 글자를 선택하는 방법과 동일하다.
+
 
 \begin{verbatim}
 >>> s = 'Monty Python'
@@ -5979,11 +5984,12 @@ similar to selecting a character:
 'Python'
 \end{verbatim}
 %
-The operator {\tt [n:m]} returns the part of the string from the 
-``n-eth'' character to the ``m-eth'' character, including the first but
-excluding the last.  This behavior is counterintuitive, but it might
-help to imagine the indices pointing {\em between} the
-characters, as in Figure~\ref{fig.banana}.
+{\tt [n:m]} 연산자가 ``n 번째'' 글자부터 ``m 번째'' 글자까지를
+리턴한다.  이 때, 첫글자는 포함되고 마지막 글자는 미포함이라는 것에
+주의해야 한다.  이와 같은 동작은 비직관적이지만, 그림
+\ref{fig.banana}에서 보인 것처럼 색인 번호가 글자들 사이를 가리키고
+있다고 생각하면 이해하는데 도움이 된다.
+
 
 \begin{figure}
 \centerline
@@ -5992,9 +5998,8 @@ characters, as in Figure~\ref{fig.banana}.
 \label{fig.banana}
 \end{figure}
 
-If you omit the first index (before the colon), the slice starts at
-the beginning of the string.  If you omit the second index, the slice
-goes to the end of the string:
+첫 번째 색인(콜론 앞의 숫자)을 쓰지 않으면 조각은 문자열의 첫 위치부터
+시작한다.  두 번째 색인을 쓰지 않으면 문자열의 끝까지를 리턴한다.
 
 \begin{verbatim}
 >>> fruit = 'banana'
@@ -6004,8 +6009,8 @@ goes to the end of the string:
 'ana'
 \end{verbatim}
 %
-If the first index is greater than or equal to the second the result
-is an {\bf empty string}, represented by two quotation marks:
+첫 색인이 두 번째 색인보다 크거나 같으면 두 개의 따옴표만 있는 {\bf 빈
+  문자열(empty string)}을 얻는다.
 \index{quotation mark}
 
 \begin{verbatim}
@@ -6014,24 +6019,24 @@ is an {\bf empty string}, represented by two quotation marks:
 ''
 \end{verbatim}
 %
-An empty string contains no characters and has length 0, but other
-than that, it is the same as any other string.
+빈 문자열은 글자를 포함하지 않기 때문에 길이가 0이라는 것 외에는 다른
+문자열과 다를 바가 없다.
 
-Continuing this example, what do you think 
-{\tt fruit[:]} means?  Try it and see.
+이 예제로 계속 이어가 보자.  {\tt fruit[:]}는 어떤 의미를 갖는
+표현일까?  한 번 실행해보자.
 \index{copy!slice}
 \index{slice!copy}
 
 
 
-\section{Strings are immutable}
+\section{문자열의 불변성}
+%Strings are immutable
 \index{mutability}
 \index{immutability}
 \index{string!immutable}
 
-It is tempting to use the {\tt []} operator on the left side of an
-assignment, with the intention of changing a character in a string.
-For example:
+문자열의 글자를 바꾸려는 의도로 {\tt[]} 연산자를 할당문의 왼편에 놓고
+쓰고 싶을 수도 있다.  다음의 예를 살펴보자.
 \index{TypeError}
 \index{exception!TypeError}
 
@@ -6041,20 +6046,19 @@ For example:
 TypeError: 'str' object does not support item assignment
 \end{verbatim}
 %
-The ``object'' in this case is the string and the ``item'' is
-the character you tried to assign.  For now, an object is
-the same thing as a value, but we will refine that definition
-later (Section~\ref{equivalence}).  
+여기서 ``객체(object)''는 문자열이고 ``항목(item)''은 할당하려고 했던
+글자를 뜻한다.  현재로서는 객체는 값과 동일하다고 이해하고
+넘어가자. \ref{equivalence}절에서 객체에 대한 정확한 정의를 다루도록
+하겠다.
 \index{object}
 \index{item}
 \index{item assignment}
 \index{assignment!item}
 \index{immutability}
 
-The reason for the error is that
-strings are {\bf immutable}, which means you can't change an
-existing string.  The best you can do is create a new string
-that is a variation on the original:
+이와 같은 오류의 원인은 문자열의 {\bf 불변성(immutable)} 때문이다.  한
+번 정의된 문자열은 변경할 수 없다는 말이다.  원래의 문자열을 변경하는
+가장 좋은 방법은 새로운 문자열을 만드는 것이다.
 
 \begin{verbatim}
 >>> greeting = 'Hello, world!'
@@ -6063,16 +6067,16 @@ that is a variation on the original:
 'Jello, world!'
 \end{verbatim}
 %
-This example concatenates a new first letter onto
-a slice of {\tt greeting}.  It has no effect on
-the original string.
+이 예제는 {\tt greeting} 문자열의 조각에 새로운 첫 글자를 연결하고
+있다.  원래의 문자열에는 어떤 변경도 일어나지 않는다.
 \index{concatenation}
 
 
-\section{Searching}
+\section{검색}
+%Searching
 \label{find}
 
-What does the following function do?
+다음 함수가 하는 일은?
 \index{find function}
 \index{function!find}
 
@@ -6086,39 +6090,36 @@ def find(word, letter):
     return -1
 \end{verbatim}
 %
-In a sense, {\tt find} is the inverse of the {\tt []} operator.
-Instead of taking an index and extracting the corresponding character,
-it takes a character and finds the index where that character
-appears.  If the character is not found, the function returns {\tt
--1}.
+{\tt find}는 {\tt []} 연산자의 역이라고 생각할 수 있다.  문자열에서
+색인 위치의 글자를 추출하는 대신 글자를 전달받아 문자열에서 몇 번째
+위치에 해당 글자가 있는지 리턴하고 있다.  해당 글자가 없다면 함수는
+{\tt -1}을 리턴한다.
 
-This is the first example we have seen of a {\tt return} statement
-inside a loop.  If {\tt word[index] == letter}, the function breaks
-out of the loop and returns immediately.
+처음으로 {\tt return}문이 루프안에 있는 예제를 살펴보았다.  {\tt
+  word[index] == letter}라면 함수는 루프에서 벗어나 즉시 리턴한다.
 
-If the character doesn't appear in the string, the program
-exits the loop normally and  returns {\tt -1}.
+문자열에서 찾고자 하는 글자가 없다면 프로그램은 루프에서 정상적으로
+빠져나와서 {\tt -1}을 리턴한다.
 
-This pattern of computation---traversing a sequence and returning
-when we find what we are looking for---is called a {\bf search}.
+수열을 순회하면서 찾고자 하는 것을 발견하면 리턴하는 종류의 연산을
+{\bf 검색(search)}이라 한다.
 \index{traversal}
 \index{search pattern}
 \index{pattern!search}
 
-As an exercise, modify {\tt find} so that it has a
-third parameter, the index in {\tt word} where it should start
-looking.
+연습 문제로 {\tt find} 함수에 세 번째 매개 변수를 추가해보라.  이 매개
+변수는 {\tt word}에서 찾기 시작해야 할 색인 번호 이다. 
 
 
-\section{Looping and counting}
+\section{루프와 합계}
+%Looping and counting
 \label{counter}
 \index{counter}
 \index{counting and looping}
 \index{looping and counting}
 \index{looping!with strings}
 
-The following program counts the number of times the letter {\tt a}
-appears in a string:
+다음은 문자열에서 {\tt a}가 몇 번 있는지 세는 프로그램이다. 
 
 \begin{verbatim}
 word = 'banana'
@@ -6129,35 +6130,32 @@ for letter in word:
 print(count)
 \end{verbatim}
 %
-This program demonstrates another pattern of computation called a {\bf
-counter}.  The variable {\tt count} is initialized to 0 and then
-incremented each time an {\tt a} is found.
-When the loop exits, {\tt count}
-contains the result---the total number of {\tt a}'s.
+이 프로그램은 {\bf 카운터(counter)}라는 연산 패턴을 나타낸다.  {\tt
+  count} 변수는 최초에 0으로 초기화하고 {\tt a}를 만날 때마다 1씩
+증가를 한다.  루프를 종료하면 {\tt count}는 문자열 내의 {\tt a}의
+개수가 저장된다.
 
-\index{encapsulation}
-As an exercise, encapsulate this code in a function named {\tt
-count}, and generalize it so that it accepts the string and the
-letter as arguments.
+\index{encapsulation} 연습 문제로 이 코드를 {\tt count}라는 함수
+이름으로 캡슐화해보자.  그리고 일반화하여 문자열과 셀 글자를 인자로
+받도록 해보자.
 
-Then rewrite the function so that instead of
-traversing the string, it uses the three-parameter version of {\tt
-find} from the previous section.
+그 후에는 만들었던 세 개의 인자를 전달 받는 {\tt find} 함수를 사용하여
+문자열 순회 부분을 제거해보자.
 
 
-\section{String methods}
+\section{문자열 메소드}
+%String methods
 \label{optional}
 
-Strings provide methods that perform a variety of useful operations.
-A method is similar to a function---it takes arguments and
-returns a value---but the syntax is different.  For example, the
-method {\tt upper} takes a string and returns a new string with
-all uppercase letters.
+문자열을 조작할 수 있는 다양한 메소드가 있다.  메소드는 함수처럼 인자를
+전달 받고 리턴 값을 갖고 있지만, 문법이 다르다.  예를 들어 {\tt
+  upper}라는 메소드는 전달 받은 문자열을 모두 대문자로 변환하여
+리턴한다.
 \index{method}
 \index{string!method}
 
-Instead of the function syntax {\tt upper(word)}, it uses
-the method syntax {\tt word.upper()}.
+함수 문법처럼 {\tt upper(word)}라고 쓰는 대신 메소드는 {\tt
+  word.upper()}라고 쓴다.
 
 \begin{verbatim}
 >>> word = 'banana'
@@ -6166,19 +6164,20 @@ the method syntax {\tt word.upper()}.
 'BANANA'
 \end{verbatim}
 %
-This form of dot notation specifies the name of the method, {\tt
-upper}, and the name of the string to apply the method to, {\tt
-word}.  The empty parentheses indicate that this method takes no
-arguments.
+메소드의 이름인 {\tt upper}와 메소드를 적용할 문자열의 이름 {\tt
+  word}와 함께 닷 표기법으로 써야 한다.  빈괄호를 쓰는 것은 인자를 받지
+않기 때문이다.
 \index{parentheses!empty}
 \index{dot notation}
 
-A method call is called an {\bf invocation}; in this case, we would
-say that we are invoking {\tt upper} on {\tt word}.
+메소드 호출을 함수 호출과는 다른 의미로 {\bf 호출(invocation)}이라고
+부른다.  지금의 경우에는 {\tt word}에 대해서 {\tt upper} 메소드를
+호출(invoke)했다.
+% 재번역 A method call is called an {\bf invocation}; in this case, we would
+% say that we are invoking {\tt upper} on {\tt word}.
 \index{invocation}
 
-As it turns out, there is a string method named {\tt find} that
-is remarkably similar to the function we wrote:
+이제 볼 {\tt find}라는 메소드는 우리가 작성했던 코드와 동작이 매우 유사하다. 
 
 \begin{verbatim}
 >>> word = 'banana'
@@ -6187,19 +6186,19 @@ is remarkably similar to the function we wrote:
 1
 \end{verbatim}
 %
-In this example, we invoke {\tt find} on {\tt word} and pass
-the letter we are looking for as a parameter.
+이 예제에서는 {\tt word}에 대해서 {\tt find}라는 메소드를 호출하면서 그
+메소드에 우리가 찾는 글자를 인자로 전달 한다.
 
-Actually, the {\tt find} method is more general than our function;
-it can find substrings, not just characters:
+사실은 {\tt find} 메소드는 우리가 작성한 코드보다 더 일반화가 잘되어
+있다.  글자만 찾는 것이 아니라 문자열 중 일부분을 찾을 수도 있다.
 
 \begin{verbatim}
 >>> word.find('na')
 2
 \end{verbatim}
 %
-By default, {\tt find} starts at the beginning of the string, but
-it can take a second argument, the index where it should start:
+기본적으로 {\tt find}는 문자열의 처음 부분에서 시작하지만 두 번째
+인자로 시작해야 하는 색인을 쓸 수 있다.
 \index{optional argument}
 \index{argument!optional}
 
@@ -6208,9 +6207,8 @@ it can take a second argument, the index where it should start:
 4
 \end{verbatim}
 %
-This is an example of an {\bf optional argument};
-{\tt find} can
-also take a third argument, the index where it should stop:
+이 예제는 {\tt find} 메소드가 세 번째 {\bf 선택적 인자(optional
+  argument)}로 멈춰야 할 색인도 받을 수 있다는 것을 보여준다.
 
 \begin{verbatim}
 >>> name = 'bob'
@@ -6218,22 +6216,24 @@ also take a third argument, the index where it should stop:
 -1
 \end{verbatim}
 %
-This search fails because {\tt b} does not
-appear in the index range from {\tt 1} to {\tt 2}, not including {\tt
-2}.  Searching up to, but not including, the second index makes
-{\tt find} consistent with the slice operator.
+이 검색은 색인 {\tt 1}에서 {\tt 2} 전까지의 색인에 {\tt b}가 없기
+때문에 실패하였다.  두 번째 색인을 포함하지 않고 그 전까지만 검색하기
+때문에 {\tt find}는 문자열 조각 연산과 일관성있게 동작한다.
 
 
 
-\section{The {\tt in} operator}
+\section{{\tt in} 연산}
+%The {\tt in} operator
 \label{inboth}
 \index{in operator}
 \index{operator!in}
 \index{boolean operator}
 \index{operator!boolean}
 
-The word {\tt in} is a boolean operator that takes two strings and
-returns {\tt True} if the first appears as a substring in the second:
+{\tt in}이라는 단어는 포함 여부를 나타내는 boolean 연산자이다.  두 개의
+문자열을 인자로 받아서 첫 번째 문자열이 두 번째 문자열에
+부분문자열이라면 {\tt True}를 리턴한다.
+
 
 \begin{verbatim}
 >>> 'a' in 'banana'
@@ -6242,8 +6242,8 @@ True
 False
 \end{verbatim}
 %
-For example, the following function prints all the
-letters from {\tt word1} that also appear in {\tt word2}:
+예를 들어 다음의 함수는 {\tt word1} 중 {\tt word2}에 포함되는 글자들을
+모두 출력한다.
 
 \begin{verbatim}
 def in_both(word1, word2):
@@ -6252,12 +6252,23 @@ def in_both(word1, word2):
             print(letter)
 \end{verbatim}
 %
-With well-chosen variable names,
-Python sometimes reads like English.  You could read
-this loop, ``for (each) letter in (the first) word, if (the) letter 
-(appears) in (the second) word, print (the) letter.''
+변수명을 잘짓는다면 Python이 영어처럼 읽히기도 한다.  
 
-Here's what you get if you compare apples and oranges:
+\begin{tabular}{l}
+for (each) letter in (the first) word, \\
+\begingroup\scriptsize
+(첫 번째) 단어에 포함된 (각) 글자들에대해 \endgroup\\
+if (the) letter (appears) in (the second) word,\\
+\begingroup\scriptsize
+(해당) 글자가 (두 번째) 단어에 포함되어 있다면 \endgroup\\
+ print (the) letter. \\
+\begingroup\scriptsize
+(포함된) 글자를 출력하라. \endgroup
+\end{tabular}
+
+
+다음의 예에서는 사과(apples)와 오렌지(oranges)를 비교한 결과이다. 
+
 
 \begin{verbatim}
 >>> in_both('apples', 'oranges')
@@ -6267,19 +6278,19 @@ s
 \end{verbatim}
 %
 
-\section{String comparison}
+\section{문자열 비교}
+%String comparison
 \index{string!comparison}
 \index{comparison!string}
 
-The relational operators work on strings.  To see if two strings are equal:
+관계 연산자는 문자열도 다룰 수 있다.  두 문자열이 동일한지 보려면 다음처럼 하면 된다. 
 
 \begin{verbatim}
 if word == 'banana':
     print('All right, bananas.')
 \end{verbatim}
 %
-Other relational operations are useful for putting words in alphabetical
-order:
+다른 관계 연산자들은 입력받은 단어들을 알파벳 순으로 정렬하는데 유용하다.
 
 \begin{verbatim}
 if word < 'banana':
@@ -6290,18 +6301,18 @@ else:
     print('All right, bananas.')
 \end{verbatim}
 %
-Python does not handle uppercase and lowercase letters the same way
-people do.  All the uppercase letters come before all the
-lowercase letters, so:
+Python은 대소문자를 사람들이 하듯이 구분하지 않는다.  모든 대문자는
+모든 소문자 전에 나타난다.  그러므로 다음과 같은 결과를 얻게 된다.
 
 \begin{verbatim}
 Your word, Pineapple, comes before banana.
 \end{verbatim}
 %
-A common way to address this problem is to convert strings to a
-standard format, such as all lowercase, before performing the
-comparison.  Keep that in mind in case you have to defend yourself
-against a man armed with a Pineapple.
+이런 류의 문제에 대응하는 일반적인 방법은 비교 전에 대문자를 소문자로
+바꾸어 문자열을 표준 형식으로 변환하는 것이다.  문자열 비교할 때 이런
+차이를 잘 기억하고 실수하지 않도록 하자.
+
+% 원문 Keep that in mind in case you have to defend yourself against a man armed with a Pineapple.
 
 
 \section{디버깅}
@@ -6309,11 +6320,11 @@ against a man armed with a Pineapple.
 \index{debugging}
 \index{traversal}
 
-When you use indices to traverse the values in a sequence,
-it is tricky to get the beginning and end of the traversal
-right.  Here is a function that is supposed to compare two
-words and return {\tt True} if one of the words is the reverse
-of the other, but it contains two errors:
+색인을 사용하여 수열의 값을 순회할 때 첫 시작 지점과 끝 지점을 제대로
+지정하는게 까다로울 수 있다.  다음의 함수는 두 단어를 비교하고 한
+단어가 다른 단어의 역순인 경우 {\tt True}를 리턴한다.  하지만, 두 개의
+오류가 있다.
+
 
 \begin{verbatim}
 def is_reverse(word1, word2):
@@ -6332,23 +6343,21 @@ def is_reverse(word1, word2):
     return True
 \end{verbatim}
 %
-The first {\tt if} statement checks whether the words are the
-same length.  If not, we can return {\tt False} immediately.
-Otherwise, for the rest of the function, we can assume that the words
-are the same length.  This is an example of the guardian pattern
-in Section~\ref{guardian}.
+첫 {\tt if}문은 두 단어의 길이가 같은지 비교한다.  서로 다르면 {\tt
+  False}를 즉시 리턴한다.  아니면, 함수가 끝날 때까지 두 단어의 길이는
+같다고 가정할 수 있다.  이 용법은 \ref{guardian} 절에서 다룬 가디언
+패턴의 예이다.
 \index{guardian pattern}
 \index{pattern!guardian}
 \index{index}
 
-{\tt i} and {\tt j} are indices: {\tt i} traverses {\tt word1}
-forward while {\tt j} traverses {\tt word2} backward.  If we find
-two letters that don't match, we can return {\tt False} immediately.
-If we get through the whole loop and all the letters match, we
-return {\tt True}.
+{\tt i}와 {\tt j}는 색인이다.  {\tt i}는 {\tt word1}을 순방향으로
+순회하고 {\tt j}는 {\tt word2}를 역방향으로 순회한다.  각 단어의 글자가
+서로 맞지 않다면 즉시 {\tt Flase}를 리턴한다.  루프를 모두 끝내고 각
+단어의 모든 글자가 동일하다면 {\tt True}를 리턴한다.
 
-If we test this function with the words ``pots'' and ``stop'', we
-expect the return value {\tt True}, but we get an IndexError:
+``pots''와 ``stop''이라는 단어로 검사를 했을 때 {\tt True}를 리턴하길
+기대하겠지만, IndexError(색인 오류)가 발생한다.
 \index{IndexError}
 \index{exception!IndexError}
 
@@ -6360,9 +6369,8 @@ expect the return value {\tt True}, but we get an IndexError:
 IndexError: string index out of range
 \end{verbatim}
 %
-For debugging this kind of error, my first move is to
-print the values of the indices immediately before the line
-where the error appears.
+저자가 이런 류의 오류를 디버깅하는 방법은 오류 발생 지점 바로 전 줄에서
+색인을 출력해보는 것이다.
 
 \begin{verbatim}
     while j > 0:
@@ -6374,7 +6382,7 @@ where the error appears.
         j = j-1
 \end{verbatim}
 %
-Now when I run the program again, I get more information:
+다시 프로그램을 실행해보면 다음과 같은 정보를 얻는다. 
 
 \begin{verbatim}
 >>> is_reverse('pots', 'stop')
@@ -6383,12 +6391,11 @@ Now when I run the program again, I get more information:
 IndexError: string index out of range
 \end{verbatim}
 %
-The first time through the loop, the value of {\tt j} is 4,
-which is out of range for the string \verb"'pots'".
-The index of the last character is 3, so the
-initial value for {\tt j} should be {\tt len(word2)-1}.
+루프를 처음 돌 때 {\tt j}의 값이 4라서 문자열 \verb"'pots'"의 범위를
+벗어난다.  이 문자열의 마지막 문자의 색인은 3이기 때문에 {\tt j}의 초기
+값은 {\tt len(word2)-1}이 되어야 한다.
 
-If I fix that error and run the program again, I get:
+오류를 수정하여 다시 실행한 결과는 다음과 같다. 
 
 \begin{verbatim}
 >>> is_reverse('pots', 'stop')
@@ -6398,26 +6405,26 @@ If I fix that error and run the program again, I get:
 True
 \end{verbatim}
 %
-This time we get the right answer, but it looks like the loop only ran
-three times, which is suspicious.  To get a better idea of what is
-happening, it is useful to draw a state diagram.  During the first
-iteration, the frame for \verb"is_reverse" is shown in
-Figure~\ref{fig.state4}.  \index{state diagram} \index{diagram!state}
+이제야 결과가 정확하게 나왔다.  하지만 루프가 3번만 실행된 것이
+이상해보인다.  이 문제를 이해하기 위해 상태도를 그려보자.  첫 루프에서
+\verb"is_reverse"의 프레임의 상태는 그림 \ref{fig.state4}에 나타나
+있다.
+\index{state diagram} \index{diagram!state}
 
 \begin{figure}
 \centerline
 {\includegraphics[scale=0.8]{figs/state4.pdf}}
-\caption{State diagram.}
+\caption{상태도.}
 \label{fig.state4}
 \end{figure}
 
-I took some license by arranging the variables in the frame
-and adding dotted lines to show that the values of {\tt i} and
-{\tt j} indicate characters in {\tt word1} and {\tt word2}.
+임의로 프레임 내의 변수들의 자리를 재배치하였고 점선을 사용하여 {\tt
+  i}와 {\tt j}가 각각 {\tt word1}과 {\tt word2}의 글자들을 나타내는
+것을 표현하였다.
 
-Starting with this diagram, run the program on paper, changing the
-values of {\tt i} and {\tt j} during each iteration.  Find and fix the
-second error in this function.
+이 그림을 시작점으로 해서 종이 위에서 프로그램의 실행 과정을
+따라가보자.  반복할 때마다 {\tt i}와 {\tt j}의 값을 바꿔보자.  함수에
+있는 두 번째 오류를 찾아 고쳐보자.
 \label{isreverse}
 
 
@@ -6426,51 +6433,47 @@ second error in this function.
 
 \begin{description}
 
-\item[object:] Something a variable can refer to.  For now,
-you can use ``object'' and ``value'' interchangeably.
+\item[객체(object):] 변수를 가리킬 수 있는 무엇. ``객체(object)''와
+  ``값(value)''를 교차하여 사용할 수 있다.  앞으로 더 정확하게 정의할
+  것이다.
 \index{object}
 
-\item[sequence:] An ordered collection of
-values where each value is identified by an integer index.
+\item[수열(sequence):] 정수 색인으로 구분되는 값들의 여러 값들의 순차 컬렉션
 \index{sequence}
 
-\item[item:] One of the values in a sequence.
+\item[아이템(item):] 수열에 포함된 값 중 하나
 \index{item}
 
-\item[index:] An integer value used to select an item in
-a sequence, such as a character in a string.  In Python
-indices start from 0.
+\item[색인(index):] 수열에 있는 아이템을 선택하기 위한 정수 값.
+  Python의 색인은 0에서 시작한다.
 \index{index}
 
-\item[slice:] A part of a string specified by a range of indices.
+\item[조각(slice):] 색인 범위로 지정된 문자열의 일부
 \index{slice}
 
-\item[empty string:] A string with no characters and length 0, represented
-by two quotation marks.
+\item[빈 문자열(empty string):] 길이가 0이고 글자가 포함안된 문자열로
+  두 개의 연속된 따옴표로 표현된다.
 \index{empty string}
 
-\item[immutable:] The property of a sequence whose items cannot
-be changed.
+\item[불변성(immutable):] 수열의 특성으로 변경 불가능한 아이템들을 갖는
+  수열을 뜻함
 \index{immutability}
 
-\item[traverse:] To iterate through the items in a sequence,
-performing a similar operation on each.
+\item[순회(traverse):] 수열의 아이템들을 하나씩 방문하면서 유사한 동작을 수행함
 \index{traversal}
 
-\item[search:] A pattern of traversal that stops
-when it finds what it is looking for.
+\item[검색(search):] 순회 패턴 중 하나로 찾는 것을 발견하면 멈춤
 \index{search pattern}
 \index{pattern!search}
 
-\item[counter:] A variable used to count something, usually initialized
-to zero and then incremented.
+\item[카운터(counter):] 보통 0으로 초기화된 후 증가하는 값으로 무언가를
+  셀 때 사용하는 변수
 \index{counter}
 
-\item[invocation:] A statement that calls a method.
+\item[호출(invocation):] 메소드를 호출하는 문장
 \index{invocation}
 
-\item[optional argument:] A function or method argument that is not
-required.
+\item[선택적 인자(optional argument):] 함수나 메소드의 인자 중 꼭 필요하지 않은 것
 \index{optional argument}
 \index{argument!optional}
 
@@ -6484,17 +6487,16 @@ required.
 \index{string method}
 \index{method!string}
 
-Read the documentation of the string methods at
-\url{http://docs.python.org/3/library/stdtypes.html#string-methods}.
-You might want to experiment with some of them to make sure you
-understand how they work.  {\tt strip} and {\tt replace} are
-particularly useful.
+\url{http://docs.python.org/3/library/stdtypes.html#string-methods}에
+설명된 문자열 메소드들의 문서을 읽어보자.  어떻게 동작하는지 알 수
+있도록 몇 개는 꼭 실험해보기 바란다.  {\tt strip}과 {\tt replace}는
+특히 유용하므로 실험해보기 바란다.
 
-The documentation uses a syntax that might be confusing.
-For example, in \verb"find(sub[, start[, end]])", the brackets
-indicate optional arguments.  So {\tt sub} is required, but
-{\tt start} is optional, and if you include {\tt start},
-then {\tt end} is optional.
+이 문서는 어쩌면 혼돈스러운 문법을 사용하고 있다.  예를 들어
+\verb"find(sub[, start[, end]])"에서 사용된 각괄호는 선택적 인자를
+나타낸다.  {\tt sub}은 필수이지만 {\tt start}는 선택적이다.  {\tt
+  start}를 선택한 경우에만 해당하는데, 선택했다면 {\tt end}가 선택적
+인자이다.
 \index{optional argument}
 \index{argument!optional}
 
@@ -6505,11 +6507,9 @@ then {\tt end} is optional.
 \index{count method}
 \index{method!count}
 
-There is a string method called {\tt count} that is similar
-to the function in Section~\ref{counter}.  Read the documentation
-of this method
-and write an invocation that counts the number of {\tt a}'s
-in \verb"'banana'".
+{\tt count}라는 문자열 메소드가 있는데, \ref{counter}절에서 본 함수와
+유사하다.  이 메소드에 대한 문서를 읽어보고 \verb"'banana'"에 {\tt a}가
+몇 개 있는지 세는 호출문을 작성해보자.
 \end{exercise}
 
 
@@ -6518,10 +6518,10 @@ in \verb"'banana'".
 \index{slice operator}
 \index{operator!slice}
 
-A string slice can take a third index that specifies the ``step
-size''; that is, the number of spaces between successive characters.
-A step size of 2 means every other character; 3 means every third,
-etc.
+문자열 조각 연산자는 ``증감폭(step size)''를 지정할 수 있는 세 번째
+색인이 있다.  이 값을 지정하면 지정된 칸만큼 떨어진 글자를 선택한다.
+예를 들어 증감폭이 2이면 홀수 번째만 선택하고 3이면 3배수 위치의 값만
+선택한다.
 
 \begin{verbatim}
 >>> fruit = 'banana'
@@ -6529,21 +6529,20 @@ etc.
 'bnn'
 \end{verbatim}
 
-A step size of -1 goes through the word backwards, so
-the slice \verb"[::-1]" generates a reversed string.
+증감폭을 -1로 지정하면 역순으로 순회한다.  \verb"[::-1]"라고 쓰면
+역순으로 표기된 문자열을 얻는다.
 \index{palindrome}
 
-Use this idiom to write a one-line version of \verb"is_palindrome"
-from Exercise~\ref{palindrome}.
+이 표현을 사용하여 연습문제 \ref{palindrome}의 \verb"is_palindrome"을
+한 줄로 표현해보자.
 \end{exercise}
 
 
 \begin{exercise}
 
-The following functions are all {\em intended} to check whether a
-string contains any lowercase letters, but at least some of them are
-wrong.  For each function, describe what the function actually does
-(assuming that the parameter is a string).
+  다음은 문자열이 소문자로 구성되었는지 검사하도록 {\em 의도}한
+  함수들이다.  이들 중 어떤 것들은 잘못되었다.  각 함수마다 무슨 동작을
+  하는지 설명해보라(문자열을 매개 변수로 받는다 가정하자).
 
 \begin{verbatim}
 def any_lowercase1(s):
@@ -6586,41 +6585,33 @@ def any_lowercase5(s):
 \index{rotation, letter}
 
 \label{exrotate}
-A Caesar cypher is a weak form of encryption that involves ``rotating'' each
-letter by a fixed number of places.  To rotate a letter means
-to shift it through the alphabet, wrapping around to the beginning if
-necessary, so 'A' rotated by 3 is 'D' and 'Z' rotated by 1 is 'A'.
+카이사르의 암호(Ceasar cypher)은 알파벳 상의 글자를 고정된 위치만큼 회전하여 다른 글자로 치환하는 방식이다. 이 말의 뜻은 'A'라는 글자를 3 회전하면 'D'가 되고 'Z'를 1 회전하면 'A'가 되도록 한다는 말이다. 
 
-To rotate a word, rotate each letter by the same amount.
-For example, ``cheer'' rotated by 7 is ``jolly'' and ``melon'' rotated
-by -10 is ``cubed''.  In the movie {\em 2001: A Space Odyssey}, the 
-ship computer is called HAL, which is IBM rotated by -1.
+단어를 회전하려면 각 글자를 같은 크기만큼 회전하여 치환하면 된다.  예를
+들어 ``cheer''를 7 회전하면 ``jolly''가 되고 ``melon''을 -10회전하면
+cubed''가 된다.  {\em 2001: 스페이스 오디세이}라는 영화에 나오는
+디스커버리호의 주컴퓨터 HAL은 IBM을 -1 회전한 글자이다.
 
 %For example ``sleep''
 %rotated by 9 is ``bunny'' and ``latex'' rotated by 7 is ``shale''.
 
-Write a function called \verb"rotate_word"
-that takes a string and an integer as parameters, and returns
-a new string that contains the letters from the original string
-rotated by the given amount.  
+함수 \verb"rotate_word"를 작성하여 문자열과 정수를 매개 변수로 받아
+정수만큼 문자열을 회전한 카이사르의 암호를 리턴해보자.
 
-You might want to use the built-in function {\tt ord}, which converts
-a character to a numeric code, and {\tt chr}, which converts numeric
-codes to characters.  Letters of the alphabet are encoded in alphabetical
-order, so for example:
+글자를 숫자로 변환시키는 내장 함수 {\tt ord}와 숫자를 글자로 변환하는 내장 함수 {\tt chr}를 사용해서 작성해보자.  알파벳의 글자들은 순차적으로 부호화되어 있다.  예를 들어 보자. 
 
 \begin{verbatim}
 >>> ord('c') - ord('a')
 2
 \end{verbatim}
 
-Because \verb"'c'" is the two-eth letter of the alphabet.  But
-beware: the numeric codes for upper case letters are different.
+\verb"'c'"는 \verb"'a'"에서 두 번째 떨어진 위치에 있기 때문에 결과가
+2가 된다.  대문자는 다르게 부호화되어 있다는 것에 주의하다.
 
-Potentially offensive jokes on the Internet are sometimes encoded in
-ROT13, which is a Caesar cypher with rotation 13.  If you are not
-easily offended, find and decode some of them.  Solution:
-\url{http://thinkpython2.com/code/rotate.py}.
+인터넷에 떠도는 불쾌한 농담들은 ROT13으로 부호화된 것들이 많다.
+ROT13은 카이사르 암호로 13번 회전했다는 뜻이다.  무덤덤한 독자라면 찾아
+바꿔 읽어 보자.  해답은 \url{http://thinkpython2.com/code/rotate.py}에
+있다.
 
 \end{exercise}
 
