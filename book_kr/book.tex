@@ -6616,37 +6616,38 @@ ROT13은 카이사르 암호로 13번 회전했다는 뜻이다.  무덤덤한 �
 \end{exercise}
 
 
-\chapter{Case study: word play}
+\chapter{사례 연구: 단어 놀이}
+%Case study: word play
 \label{wordplay}
 
-This chapter presents the second case study, which involves
-solving word puzzles by searching for words that have certain
-properties.  For example, we'll find the longest palindromes
-in English and search for words whose letters appear in
-alphabetical order.  And I will present another program development
-plan: reduction to a previously solved problem.
+이 번 장에서는 두 번째의 사례 연구를 선보인다.  특정 성질을 갖는
+단어들을 찾아 단어 퍼즐을 푸는 프로그램이다.  예를 들어 영어에 존재하는
+긴 회문을 찾아 알파벳 순으로 글자가 나타나는 단어들을 찾을 것이다.
+그리고 나서 이전에 해결한 문제의 해법을 응용하는 다른 프로그램 개발
+계획에 대해 설명할 것이다.
 
 
-\section{Reading word lists}
+
+\section{단어 목록 읽어 들이기}
+%Reading word lists
 \label{wordlist}
 
-For the exercises in this chapter we need a list of English words.
-There are lots of word lists available on the Web, but the one most
-suitable for our purpose is one of the word lists collected and
-contributed to the public domain by Grady Ward as part of the Moby
-lexicon project (see \url{http://wikipedia.org/wiki/Moby_Project}).  It
-is a list of 113,809 official crosswords; that is, words that are
-considered valid in crossword puzzles and other word games.  In the
-Moby collection, the filename is {\tt 113809of.fic}; you can download
-a copy, with the simpler name {\tt words.txt}, from
-\url{http://thinkpython2.com/code/words.txt}.
+이 장에서의 활용할 예제들은 영어 단어의 목록이 있어야 한다.  웹에는
+무수히 많은 단어 목록들이 있지만 우리의 목적에 가장 적합한 목록은
+Grady Ward가 공개적으로 유지 관리 및 기여하고 있는 모비 어휘목록
+프로젝트 (Moby lexicon project,
+\url{http://wikipedia.org/wiki/Moby_Project} 참고)이다.  이 목록은
+113,809개의 공식 십자 낱말 풀이용 단어들이다. 십자 낱말 풀이와 다른
+단어 놀이에 적합한 단어 목록이다.  이 모비 목록은 {\tt
+  113809of.fic}이라는 이름을 갖고 있지만
+\url{http://thinkpython2.com/code/words.txt}에서 {\tt words.txt}라는
+쉬운 이름으로 내려 받아 사용하면 된다.
 \index{Moby Project}
 \index{crosswords}
 
-This file is in plain text, so you can open it with a text
-editor, but you can also read it from Python.  The built-in
-function {\tt open} takes the name of the file as a parameter
-and returns a {\bf file object} you can use to read the file.
+이 파일은 서식이 없어서 어떤 문서 편집기로 열어도 되지만, Python에서 이
+파일을 읽어보자.  파일 이름을 매개 변수로 {\tt open}이라는 내장 함수에
+전달하면 해당 파일을 읽을 수 있는 {\bf 파일 객체}를 리턴 받는다.
 \index{open function}
 \index{function!open}
 \index{plain text}
@@ -6658,10 +6659,11 @@ and returns a {\bf file object} you can use to read the file.
 >>> fin = open('words.txt')
 \end{verbatim}
 %
-{\tt fin} is a common name for a file object used for input.  The file
-object provides several methods for reading, including {\tt readline},
-which reads characters from the file until it gets to a newline and
-returns the result as a string: \index{readline method}
+{\tt fin}은 입력으로 전달 받은 파일 객체를 나타내는 일반적인 이름이다.
+파일 객체는 읽기를 위한 여러 메소드를 제공하는데 그 중에는 {\tt
+  readline}도 포함된다. 이 메소드는 파일에서 줄 바꿈(newline) 기호를 만나기
+전까지의 글자들을 읽은 후 해당 문자열을 리턴한다.
+\index{readline method}
 \index{method!readline}
 
 \begin{verbatim}
@@ -6669,23 +6671,21 @@ returns the result as a string: \index{readline method}
 'aa\r\n'
 \end{verbatim}
 %
-The first word in this particular list is ``aa'', which is a kind of
-lava.  The sequence \verb"\r\n" represents two whitespace characters,
-a carriage return and a newline, that separate this word from the
-next.
+이 목록에서 첫 번째 단어는 ``aa''로 용암의 일종이다.  그 뒤에 따라오는
+\verb"\r\n"은 두 개의 공백 문자로 리턴(carriage return)과 줄 바꿈을
+나타내며 다음 단어와 지금의 단어를 구분하는 역할을 한다.
 
-The file object keeps track of where it is in the file, so
-if you call {\tt readline} again, you get the next word:
+파일 객체는 파일에서의 현재 위치를 기억하고 있기 때문에 또 한 번 {\tt
+  readline}을 호출하면 그 다음 단어를 얻는다.
 
 \begin{verbatim}
 >>> fin.readline()
 'aah\r\n'
 \end{verbatim}
 %
-The next word is ``aah'', which is a perfectly legitimate
-word, so stop looking at me like that.
-Or, if it's the whitespace that's bothering you,
-we can get rid of it with the string method {\tt strip}:
+그 다음 단어는 ``aah''이며, 이 단어도 전혀 이상하지 않은 낱말이다.
+만약 공백 문자가 거슬린다면 {\tt strip}이라는 문자열 메소드를 이용하여
+없앨 수 있다.
 \index{strip method}
 \index{method!strip}
 
@@ -6696,9 +6696,8 @@ we can get rid of it with the string method {\tt strip}:
 'aahed'
 \end{verbatim}
 %
-You can also use a file object as part of a {\tt for} loop.
-This program reads {\tt words.txt} and prints each word, one
-per line:
+{\tt for} 루프에 파일 객체를 사용할 수도 있다.  다음의 프로그램은 {\tt
+  words.txt}를 읽어서 각 단어를 한 줄씩 읽는 동작을 한다.
 \index{open function}
 \index{function!open}
 
@@ -6713,34 +6712,36 @@ for line in fin:
 \section{연습 문제}
 %Exercises
 
-There are solutions to these exercises in the next section.
-You should at least attempt each one before you read the solutions.
+이 연습 문제들에 대한 해답은 다음 절에 나와 있다.  해법을 읽어보기 전에
+풀어 보기 바란다.
 
-\begin{exercise}
-Write a program that reads {\tt words.txt} and prints only the
-words with more than 20 characters (not counting whitespace).
+\begin{exercise} 
+  {\tt words.txt}를 읽는 프로그램을 작성하여 (공백을 포함하지 않고) 20
+  글자 이상이 되는 단어들만 출력 해보자.
 \index{whitespace}
 
 \end{exercise}
 
 \begin{exercise}
 
-In 1939 Ernest Vincent Wright published a 50,000 word novel called
-{\em Gadsby} that does not contain the letter ``e''.  Since ``e'' is
-the most common letter in English, that's not easy to do.
+  1939년에 Ernest Vincent Wright가 {\em Gadsby}라는 50,000 단어로 된
+  소설을 출판하였다.  그 소설에는 영어에서 가장 흔한 글자 중 하나인
+  ``e''가 포함되어 있지 않다.  그런 글을 쓴다는 것이 쉬운 일은 아니었을
+  것이다.
 
-In fact, it is difficult to construct a solitary thought without using
-that most common symbol.  It is slow going at first, but with caution
-and hours of training you can gradually gain facility.
+  사실 이 흔한 글자를 쓰지 않고는 사적인 생각을 하기도 어렵다.
+  처음에는 매우 느리겠지만 조심스럽게 오랜 시간 동안 훈련을 하다보면 할
+  수 있게 된다.
 
-All right, I'll stop now.
+  설명은 여기까지.
 
-Write a function called \verb"has_no_e" that returns {\tt True} if
-the given word doesn't have the letter ``e'' in it.
+  \verb"has_no_e"이라는 함수를 작성하여 전달 받은 단어에 ``e''가 없다면
+  {\tt True}를 리턴하도록 하자.
 
-Modify your program from the previous section to print only the words
-that have no ``e'' and compute the percentage of the words in the list
-that have no ``e''.
+  이전 절에서 사용한 프로그램을 수정하여 ``e''를 포함하고 있지 않은
+  단어들만 출력하도록 한 뒤 단어 목록에서 ``e''를 포함하고 있지 않은
+  단어의 백분율을 계산해보자.
+
 \index{lipogram}
 
 \end{exercise}
@@ -6748,16 +6749,14 @@ that have no ``e''.
 
 \begin{exercise} 
 
-Write a function named {\tt avoids}
-that takes a word and a string of forbidden letters, and
-that returns {\tt True} if the word doesn't use any of the forbidden
-letters.
+  단어와 금지 문자열을 입력 받는 {\tt avoids}라는 함수를 작성해보자.
+  만약 이 함수가 {\tt True}를 리턴하면 해당 단어는 금지 문자열을 쓰고
+  있지 않다는 뜻이다.
 
-Modify your program to prompt the user to enter a string
-of forbidden letters and then print the number of words that
-don't contain any of them.
-Can you find a combination of 5 forbidden letters that
-excludes the smallest number of words?
+  사용자가 금지 문자를 입력하도록 프로그램을 수정한 후 금지 문자열을
+  포함하지 않는 단어가 총 몇 개인지 출력하도록 해보자.  가장 적은 수의
+  단어들을 목록에서 제거하도록 문자 다섯 개로 이루어진 금지 문자 집합을
+  구성할 수 있겠는가?
 
 \end{exercise}
 
@@ -6765,30 +6764,30 @@ excludes the smallest number of words?
 
 \begin{exercise}
 
-Write a function named \verb"uses_only" that takes a word and a
-string of letters, and that returns {\tt True} if the word contains
-only letters in the list.  Can you make a sentence using only the
-letters {\tt acefhlo}?  Other than ``Hoe alfalfa?''
+  단어와 문자열을 입력 받는 \verb"uses_only" 라는 함수를 작성하여
+  전달한 문자열로만 이루어진 단어인 경우에만 {\tt True}를 리턴하도록
+  해보자. {\tt acefhlo}만으로 로 이루어진 문장을 만들 수 있겠는가?
+  ``Hoe alfalfa''외에 다른 문장을 만들어보자.
 
 \end{exercise}
 
 
 \begin{exercise} 
 
-Write a function named \verb"uses_all" that takes a word and a
-string of required letters, and that returns {\tt True} if the word
-uses all the required letters at least once.  How many words are there
-that use all the vowels {\tt aeiou}?  How about {\tt aeiouy}?
+  단어와 꼭 사용해야 하는 글자로 이루어진 문자열을 입력 받는
+  \verb"uses_all" 라는 함수를 작성해보자. 이 함수는 꼭 사용해야 하는
+  문자열의 글자들을 최소한 한 번 사용하면 {\tt True}를 리턴한다.  {\tt
+    aeiou}를 모두 사용하는 단어는 몇 개나 있는가? {\tt aeiouy}를
+  사용하는 하는 단어는 몇 개나 있나?
 
 \end{exercise}
 
 
 \begin{exercise}
 
-Write a function called \verb"is_abecedarian" that returns
-{\tt True} if the letters in a word appear in alphabetical order
-(double letters are ok).  
-How many abecedarian words are there?
+  단어의 글자들이 알파벳 순으로 나열이 되어 있으면 {\tt True}를
+  리턴하는 \verb"is_abecedarian"이라는 함수를 작성해보자(두 번 연속
+  사용되는 경우도 인정된다).  알파벳 순으로 된 단어가 몇 개나 되는가?
 
 \index{abecedarian}
 
@@ -6796,7 +6795,8 @@ How many abecedarian words are there?
 
 
 
-\section{Search}
+\section{검색}
+%Search
 \label{search}
 \index{search pattern}
 \index{pattern!search}
